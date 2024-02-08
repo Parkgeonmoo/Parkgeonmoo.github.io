@@ -46,5 +46,9 @@
 
   a{
     color: #ffffff;
-    pointer-events: none;
+
+  }
+
+  a:hover{ 
+    color: #ffffff;
   }
