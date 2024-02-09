@@ -440,3 +440,53 @@ $(function() {
 
 });
 
+document.getElementById('toggleButton1').addEventListener('click', function() {
+    var toggleText = document.getElementById('toggleText1');
+    var toggleButton = document.getElementById('toggleButton1');
+    if (toggleText.style.display === 'none') {
+        toggleText.style.display = 'block';
+        toggleButton.innerHTML = "▼ 구성원"; // 텍스트를 아래 화살표로 변경
+    } else {
+        toggleText.style.display = 'none';
+        toggleButton.innerHTML = "▶ 구성원"; // 텍스트를 오른쪽 화살표로 변경
+    }
+});
+
+document.getElementById('toggleButton2').addEventListener('click', function() {
+    var toggleText = document.getElementById('toggleText2');
+    var toggleButton = document.getElementById('toggleButton2');
+    if (toggleText.style.display === 'none') {
+        toggleText.style.display = 'block';
+        toggleButton.innerHTML = "▼ 구성원"; // 텍스트를 아래 화살표로 변경
+    } else {
+        toggleText.style.display = 'none';
+        toggleButton.innerHTML = "▶ 구성원"; // 텍스트를 오른쪽 화살표로 변경
+    }
+});
+
+document.getElementById('toggleButton3').addEventListener('click', function() {
+    var toggleText = document.getElementById('toggleText3');
+    var toggleButton = document.getElementById('toggleButton3');
+    if (toggleText.style.display === 'none') {
+        toggleText.style.display = 'block';
+        toggleButton.innerHTML = "▼ 구성원"; // 텍스트를 아래 화살표로 변경
+    } else {
+        toggleText.style.display = 'none';
+        toggleButton.innerHTML = "▶ 구성원"; // 텍스트를 오른쪽 화살표로 변경
+    }
+});
+
+
+document.getElementById('toggleButton4').addEventListener('click', function() {
+    var toggleText = document.getElementById('toggleText4');
+    var toggleButton = document.getElementById('toggleButton4');
+    if (toggleText.style.display === 'none') {
+        toggleText.style.display = 'block';
+        toggleButton.innerHTML = "▼ 구성원"; // 텍스트를 아래 화살표로 변경
+    } else {
+        toggleText.style.display = 'none';
+        toggleButton.innerHTML = "▶ 구성원"; // 텍스트를 오른쪽 화살표로 변경
+    }
+});
+
+
