@@ -274,33 +274,171 @@
 								<span class="date">2024.03 ~ (1년 , 재직중)</span>
 								<h2>CDRI</h2>
 								<span class="position">Backend Engineer</span>
+								<br>
+								<br>
+								<br>
 
-								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">주요 업무</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 사용자 인증 API 설계 및 Spring Security와 JWT 토큰을 이용하여 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 각자 다른 Server끼리 통신 진행 시 API Key를 통한 간단한 사용자 인증 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 인허가를 진행하기 위한 성분 스크리닝 API 설계 및 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 인허가를 진행하기 위한 전성분 스크리닝 API 설계 및 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 제품에 대한 변경 사항 히스토리 API 설계 및 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 필요한 기능 개발 시 데이터베이스 설계</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- RESTful API 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- RestDocs를 통한 API 문서화</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- QA를 통한 검증 및 테스트 시나리오 작성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- AWS 클라우드 서버를 통한 자동 CI/CD 구축 및 테라폼으로 인프라를 코드로 관리할 수 있도록 변경</p>
+								<span class="date">2024.01-2025.02</span>
+								<h2>Cosmetest</h2>
+								<span class="position">백엔드 서버 인프라 관리</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 백엔드 서버가 배포될때 CI/CD에 대한 프로세스가 한 눈에 보기 어려워 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- github actions와 지정된 script로 돌아가던 CI/CD를 코드로 한 눈에 인프라를 알 수 있는 Terraform을 도입하여 처리</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 무중단 배포와 자동 오토스케일링에 대한 장점이 있는 ECS를 도입하여 DownTime 없도록 구축 및 오토스케일링 전략을 지정하여 필요에 따라 컨테이너 인스턴스를 생성하여 부하를 분산시킬 수 있도록 처리</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 이전 배포 과정에서는 배포 실패 시 Service Recovery가 존재하지 않아 오류가 발생하던 적이 있었는데 ECS를 사용하면서 자동 장애 처리를 적용하여 배포가 잘못되었을 경우 latest를 이용해 이전 버전으로 롤백하도록 처리</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- TerraForm</p>
+
+								<br>
+
+								<span class="date">2024.12-2025.02</span>
+								<h2>Cosmetest</h2>
+								<span class="position">임상 실험에 대한 정보 관리</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 임상 실험을 고객사로부터 정보를 받아 플랫폼에 저장할 수 있도록 만들고 담당자별로 어떤 실험들이 어떤 상태에 있는지와 고객사에게 안내 메일을 나갔는지 확일할 수 있는 메일 발송 관리 기능이 필요하게 되어 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 기존에 존재하던 데이터들에 대한 이관 작업 및 변경이 필요하여 Query를 Bulk 전략을 이용하여 작성하여 Data Migration 작업 진행</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 임상 관리를 위해 RESTFUL API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 임상 관리를 위한 정규화,반정규화를 고려한 데이터베이스 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 멀티 DB를 사용하게 되어 Master DB와 Slave DB들의 트랜잭션을 따로 Config를 통해 설정하여 트랙잭션이 정상적으로 진행되도록 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 임상 시험에 대한 상태가 조건이 충족되면 자동으로 변경되어야 하는 조건이 존재해 많은 데이터를 자동으로 업데이트 시켜주기 위해 Spring Batch와 Scheduling을 이용하여 시험 상태값 자동 변경 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 400에러에 대한 내용이 기본 Error 형태로 클라이언트에게 전달되고 있어 어떤 부분을 잘못 요청했는지에 대한 어려움이 있어 해당 부분에 대한 케이스들을 정리하여 GlobalExceptionHandler에서 처리할 수 있도록 만든 후 어떤 오류가 발생했는지 Slack Webhook을 연결하여 내용이 보이도록 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 인증,인가에 대한 부분에서 오류가 발생했을 경우 Dispatcher Servelt까지 오류가 전파되지 않아 정의된 오류 메시지를 보여줄 수 없어 Filter에서 발생한 오류를 EntryPoint를 만들어 정의한 에러 메시지로 보여줄 수 있도록 구현</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Java 17, Java 11</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 3.1, Spring Boot 2.6</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Batch, cron</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Slack</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+
+								<br>
+
+
+								<span class="date">2024.08-2024.11</span>
+								<h2>Ceticos</h2>
+								<span class="position">성분 규제 화이트리스트,블랙리스트 개념 도입 및 색소에 대한 규제 개념 도입</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 성분을 스크리닝 하는데에 있어 규제 자체에 성분들을 화이트리스트,블랙리스트로 등록할 수 있게 하여 스크리닝 진행 시 해당 성분이 선택한 규제들에 대해 화이트리스트,블랙리스트에 포함되는지 알려주는 여부와 색소라는 성분인지를 판단하고 색소에 대한 규제에 적합한지를 알려주는 내용이 필요하게 되어 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 규제에 대한 데이터를 1:1 구조에서 1:N 구조로 확장이 필요하게 되어 확장 및 API 영향도 파악 및 API 리팩토링</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 화이트리스트, 블랙리스트, 색소 규제를 위해 RESTFUL API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- native Query로 작성된 쿼리들은 컴파일 시 오류를 발견할 수 없어 QueryDsl을 도입하여 사전에 잘못된 쿼리를 발견할 수 있도록 변경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Layerd Architecture를 사용할때 트랜잭션 전략인 Propagation 중 Mandatory를 도입하여 의존성 관리 및 트랜잭션 관리를 하도록 변경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 화이트리스트, 블랙리스트, 색소 규제를 위한 정규화,반정규화를 고려한 데이터베이스 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 멀티 DB를 사용하게 되어 Master DB와 Slave DB들의 트랜잭션을 따로 Config를 통해 설정하여 트랙잭션이 정상적으로 진행되도록 구현</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Java 17, Java 11</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 3.1, Spring Boot 2.6</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+
+								<br>
+
+								<span class="date">2024.06-2024.08</span>
+								<h2>Ceticos</h2>
+								<span class="position">다른 API 서버 통신 시 API 키를 통한 인증</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 인증을 담당하는 서버로부터 다른 서버에 필요한 데이터를 요청하는 방식이 생기는데 보안에 대해 따로 설정된 부분이 있어 인가되지 않은 사람에게 요청이 들어올 경우 막을 방법이 없어 대응 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- API KEY를 SHA 256를 활용한 해시함수 암호화 KEY로 생성, 요청 시 Header에 넣어 인증된 값일 경우에만 요청을 내려주도록 변경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 개발 환경에 따라 Spring Profile을 나누어 API KEY 값을 설정하여 인증 영역을 분리</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Java 17, Java 11</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 3.1, Spring Boot 2.6</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+
+								<br>
+
+								<span class="date">2024.05-2024.06</span>
+								<h2>Ceticos</h2>
+								<span class="position">MoCRA 개정에 따른 서류 변경</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 미국 화장품 규제 법인 MoCRA에 대해 변경점이 생겨 미국에 수출을 진행할때 추가적으로 제출해야하는 서류가 생겨 이에 대응하는 기능 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- MocRA 추가 서류를 위해 RESTFUL API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- MocRA에 대한 스크리닝을 진행하기 위한 정규화,반정규화를 고려한 데이터베이스 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 변경 히스토리를 저장하도록 하여 어떤 User가 해당 문서를 수정하였는지 남기도록 구현 및 검색 가능하도록 하여 담당자들의 업무 효율성 12% 향샹</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 고도화 개발에 따라 기존에 사용하던 API들에서 확장이 진행되어 영향도를 파악하여 불필요한 API들 삭제 및 리팩토링을 통하여 한 번에 처리 가능한 API들은 합치도록 변경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- ThymeLeaf를 통하여 User가 발행하고자 하는 인증서에 대한 정보를 PDF,Docx 형태로 나누어서 발행할 수 있도록 구현</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- Java 17</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Spring Security</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- JPA</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- MariaDB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 3.1</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Git</p>
+
+								<br>
+
+								<span class="date">2024.04-2024.05</span>
+								<h2>Ceticos</h2>
+								<span class="position">전성분 스크리닝 개발</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 수출을 진행할때 아트웍(화장품 겉 표지 껍데기)에 써져있는 성분들을 OCR을 통해 확인하여 실제 사용자가 입력한 성분들과 비교 후 수출에 해당하는 국가에 해당하는 규제에 위반되는 성분들이 있는지 알려주기 위해 새로운 기능 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 전성분 스크리닝 위해 RESTFUL API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 전성분에 대한 스크리닝을 진행하기 위한 정규화,반정규화를 고려한 데이터베이스 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 서버에서 다른 서버와 통신이 필요하여 RestTemplate을 활용하여 AI Server와 통신하여 응답 값을 받도록 처리</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS S3에 같은 전성분 스크리닝을 진행 시 최대 30개의 이미지만 S3에 저장하도록 변경하여 AWS S3 공간 23% 절약</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Java 11</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 2.6</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+
+								<br>
+
+								<span class="date">2024.03-2024.04</span>
+								<h2>Ceticos</h2>
+								<span class="position">성분 스크리닝 고도화 개발</span>
+								<br>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 수출을 위해 성분에 대한 스크리닝을 진행하는데에 있어 국가뿐만이 아니라 스토어,지역에 대한 규제가 스크리닝 되도록 추가 작업 필요하여 규제들에 대한 추가 작업 필요</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 성분 스크리닝 고도화를 위해 국가,스토어 등 추가적인 규제 RESTFUL API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 성분에 대한 스크리닝을 진행하기 위한 정규화,반정규화를 고려한 데이터베이스 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 기존에 존재하던 Slow Query를 Explain을 통하여 느린 부분 확인 후 인덱스를 추가하여 4ms -> 0.89ms로 단축</p>
+
+								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Java 11</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Spring Boot 2.6</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- maria DB</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS</p>
+
+								<br>
 							</div>
 						</div>
 
-						<br> <!-- 페이지 구분을 위한 줄 바꿈 -->
+						<br>
 
-						<!-- 코그넷나인 경험 -->
 						<div class="resume-wrap d-flex ftco-animate">
 							<div class="icon d-flex align-items-center justify-content-center">
 								<span class="flaticon-ideas"></span>
