@@ -117,7 +117,7 @@
 					<nav id="navi">
 						<ul>
 							<li><a href="#page-1">Skills</a></li>
-							<li><a href="#page-3">Experience & Project</a></li>
+							<li><a href="#page-3">Experience & TroubleShooting</a></li>
 							<li><a href="#page-4">Certificate </a></li>
 							<li><a href="#page-5">Education </a></li>
 
@@ -261,9 +261,10 @@
 							
 						</div>
 					</div>
+
 					<div id="page-3" class="page two">
 
-						<h2 class="heading">Experience</h2>
+						<h2 class="heading">Experience & TroubleShooting</h2>
 
 
 						<div class="resume-wrap d-flex ftco-animate">
@@ -278,54 +279,47 @@
 								<br>
 								<br>
 
-								<span class="date">2025.04-2025.07</span>
-								<h2>SmPay</h2>
-								<span class="position">SmPay Beta 버전 개발</span>
-								<br>
-
-								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- SmPay 베타 버전 오픈을 위해 필요한 API 개발</p>
+								<h2>서비스명 : SmPay</h2>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 멀티모듈 구조 설계를 통해 도메인별 책임을 분리하고, 유지보수성과 서비스 확장성을 강화</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 회원에 대한 인증/인가에 대한 로직을 Spring security 통하여 구축</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Rest API로 규격을 맞춰 개발하여 클라이언트와 안정적인 통신을 할 수 있도록 API 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터를 수집하기 위해 Bulk Insert 및 Bulk Delete 처리와 스레드를 병렬로 구성하여 API 응답 속도 개선 (100만 건 기준 30분 -> 12분)</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- JPA와 QueryDsl을 사용하여 컴파일 시 쿼리 작성 오류 감지 및 코드로 쿼리를 관리하여 유연한 대응을 할 수 있도록 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 초기 개발 세팅을 위해 Google Java 컨벤션을 도입하여 팀원간의 컨벤션을 일치할 수 있게 설정</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 외부 API 호출을 진행할 때 비동기적으로 처리도 가능한 WebClient를 선정하여 API를 콜 할 수 있도록 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 공통 예외 처리 구현 및 Security에서 발생하는 에러 GlobalEntryPoint 만들어 처리할 수 있도록 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 테스트 코드 작성하여 변화가 발생하는 부분이 깨질 경우 빌드하지 못하도록 하여 배포 오류 방지 및 Rest Docs를 도입하여 API 문서 작성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Spring Batch를 통한 데일리 배치를 구현하여 조건에 맞는 데이터들 변경(인증에 대한 기간 만료 및 상태 조건 충족에 따른 상탯값 변경)</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- AWS SES와 Naver SENS를 이용하는 Util성 클래스 구현하여 EventPublisher를 통한 이메일, 문자 비동기 발송 로직 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 데이터 일관성과 성능을 동시에 확보하기 위해 DB 정규화 및 반정규화 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 도메인별 책임 분리를 통한 유지보수성과 확장성 강화를 위해 멀티모듈 구조 설계</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 보안 및 접근제어 강화를 위해 Spring Security 기반 인증/인가 로직 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 클라이언트와의 명확한 통신 규약을 위해 RESTful API 설계 및 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 적재/삭제 시 성능 병목을 해결하기 위해 Bulk Insert/Delete와 멀티스레드 처리 적용</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 쿼리 오류를 사전에 방지하고 유지보수성을 높이기 위해 JPA와 QueryDSL 도입</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 외부 시스템과의 비동기 통신 및 응답성 향상을 위해 WebClient 기반 API 연동 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 이메일·문자 알림의 신속한 발송과 비동기 처리를 위해 AWS SES, Naver SENS 연동 및 EventPublisher 활용</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 서비스 장애 시 일관된 에러 응답을 제공하기 위해 공통 예외 처리 및 Security EntryPoint 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 코드 변경 시 품질 저하와 배포 오류를 방지하기 위해 테스트 코드 작성 및 Rest Docs 기반 API 문서화</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 서비스 가용성 극대화와 배포 중단 방지를 위해 Github Actions, CodeDeploy 기반 Blue/Green 무중단 배포 파이프라인 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 인증 만료 및 상태 변경 자동화를 위해 Spring Batch 기반 데일리 배치 작업 구현</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
+
 								<p style="margin-top:0px; margin-bottom:0px;">- Java 17</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- Spring 3.4</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- mysql</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- Spring batch</p>
-
-								<br>
-
-								<span class="date">2025.04-2025.07</span>
-								<h2>Infra</h2>
-								<span class="position">백엔드 서버 인프라 관리</span>
-								<br>
-
-								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">배경</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 초기 SmPay 서비스를 안정적으로 배포하기 위해 무중단 배포 파이프라인 구축</p>
-
-								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- github actions을 통한 CI 스크립트 작성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- codeDeploy를 통한 CD 구성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 배포 완료 시 slack Webhook을 이용한 알람 설정</p>
-
-								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Github actions</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS EC2</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- AWS S3</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- AWS CodeDeploy</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- Slack</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- Github actions</p>
 
-								<br>
+								<div class="troubleshooting-inner" style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+									<h4 style="color:#3e64ff; font-weight:bold; margin-bottom:10px;">
+										<span class="flaticon-idea" style="margin-right:5px;"></span>
+										TroubleShooting
+									</h4>
+									<div>
+										<b style="color:#222;">대용량 광고주 데이터 적재/삭제 병목 해결</b><br><br>
+										<span style="color:#222; font-weight:bold;">문제 상황</span>: 광고주 데이터 대량 적재 요구가 있었고, 해당 데이터는 delete → insert 방식으로 처리해야 했습니다. <br>
+										JPA 메소드로 단건씩 delete/insert를 수행하다 보니 성능 병목이 발생하는 문제를 발견했습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: nativeQuery를 활용해 다건을 한 번에 처리하는 Bulk Delete/Insert 전략을 도입했습니다. <br>
+										삭제/적재 작업을 Queue에 넣고, chunk size 단위로 묶어 일괄 처리하였으며, 서버의 vCPU 개수 x2배만큼 스레드를 생성해 병렬로 작업을 분산시켰습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">성과</span>: 기존에 30만 건의 대용량 데이터 기준으로 30분대 처리되는 속도를 9분대로 처리되도록 개선하였으며, 서비스의 실시간성과 안정성을 크게 높였습니다.
+									</div>
+								</div>
 							</div>
 						</div>
 
