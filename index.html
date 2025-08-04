@@ -204,7 +204,7 @@
 									<br>다양한 광고 매체와 연동하여 데이터 정합성 유지 및 업무 자동화를 목표로 구축된 시스템입니다.</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 서비스 확장성과 코드 재사용성 확보를 위해 도메인별 멀티모듈 아키텍처 설계 및 의존성 관리 체계 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 서비스 확장성과 코드 재사용성 확보를 위해 모노레포 멀티 모듈 아키텍처 구성 및 런타임 시 MSA 형태 서비스 배포 및 관리</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리 병목 해결을 위해 Bulk Insert/Delete + 멀티스레드(vCPU x2) 전략 도입으로 30만 건 기준 30분 → 9분 성능 개선</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 데이터 정합성과 조회 성능 최적화를 위해 정규화/반정규화 혼합 설계 및 복합 인덱스 구성으로 평균 쿼리 응답 시간 2.5초 → 0.8초로 68% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 인증/인가 보안 강화를 위해 JWT + Spring Security 기반 다중 인증 체계 및 권한 관리 시스템 구축</p>
@@ -212,9 +212,9 @@
 								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증과 동적 쿼리 성능 최적화를 위해 JPA + QueryDSL 조합 도입</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 이벤트 기반 비동기 처리로 응답 시간 단축을 위해 EventPublisher + AWS SES/Naver SENS 연동 구현으로 알림 발송 시간 3.2초 → 0.9초로 72% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 장애 대응 시간 단축을 위해 전역 예외 처리 + Slack 실시간 알림 시스템 구축으로 평균 장애 인지 시간 15분 → 3분으로 80% 단축</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 배포 안정성과 가용성 확보를 위해 Blue/Green 무중단 배포 + 자동 롤백 파이프라인 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 배포 안정성과 가용성 확보를 위해 Blue/Green 무중단 배포</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 배치 처리 안정성과 모니터링을 위해 Spring Batch + Cron 스케줄링 기반 데이터 정합성 관리 시스템 구현으로 데이터 불일치 오류 월 평균 12건 → 1건으로 92% 감소</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 수동 API 문서 작성으로 인한 문서-코드 불일치 문제 해결을 위해 Rest Docs + 단위/통합 테스트 환경 구축으로 API 문서 정확도 85% → 98%로 향상 및 테스트 커버리지 90% 달성</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 수동 API 문서 작성으로 인한 문서-코드 불일치 문제 해결을 위해 Rest Docs + 슬라이스 테스트 환경 구축으로 API 문서 정확도 85% → 100%로 향상</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
 
@@ -238,7 +238,7 @@
 										JPA 메소드로 단건씩 delete/insert를 수행하다 보니 성능 병목이 발생하는 문제를 발견했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: nativeQuery를 활용해 다건을 한 번에 처리하는 Bulk Delete/Insert 전략을 도입했습니다. <br>
 										삭제/적재 작업을 Queue에 넣고, chunk size 단위로 묶어 일괄 처리하였으며, 서버의 vCPU 개수 x2배만큼 스레드를 생성해 병렬로 작업을 분산시켰습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">성과</span>: 기존에 30만 건의 대용량 데이터 기준으로 30분대 처리되는 속도를 9분대로 처리되도록 개선하였으며, 서비스의 실시간성과 안정성을 크게 높였습니다.
+										<span style="color:#222; font-weight:bold;">성과</span>: 기존에 30만 건의 대용량 데이터 기준으로 30분대 처리되는 속도를 9분대로 처리되도록 개선하였으며, 서비스의 실시간성과 안정성을 크게 높였습니다. 현재는 이에 그치지 않고 MessageQueue를 도입하여 connection pool은 고갈나지 않으며 데이터를 신뢰성 있게 처리할 수 있게 구현중입니다.
 									</div>
 								</div>
 							</div>
