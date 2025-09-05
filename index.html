@@ -264,20 +264,18 @@
 								<br>
 
 								<h2>서비스명 : Ceticos, Cosmetest</h2>
-								<p style="margin-top:0px; margin-bottom:0px;">Certicos는 화장품 및 기능성 제품의 인증 업무를 디지털화한 플랫폼으로, 제품별 인증 항목 관리, 서류 업로드 및 검토, 기관 제출 및 처리 상태 추적까지 인증 전 주기(Pipeline)를 자동화·시각화한 시스템입니다.<br>
-									사용자 역할 기반으로 업무를 분리하고, 워크플로우 기반의 승인 프로세스와 이력 관리, 알림 기능을 통해 국내외 인증 관리의 생산성과 투명성을 높입니다.
-									<br>다양한 광고 매체와 연동하여 데이터 정합성 유지 및 업무 자동화를 목표로 구축된 시스템입니다.
+								<p style="margin-top:0px; margin-bottom:0px;">Certicos는 화장품 및 기능성 제품의 인증 업무를 디지털화한 플랫폼으로, 제품별 인증 항목 관리, 서류 업로드 및 검토, 기관 제출 및 처리 상태 추적까지 인증 전 주기(Pipeline)를 자동화·시각화를 목표로 구축된 시스템입니다.<br>
 									<br><br>
 									CosmeTest는 화장품 시험 분석 업무의 의뢰-진행-보고 전 과정을 통합 관리하는 플랫폼으로, 시험 의뢰 접수, 스케줄링, 결과 등록, 리포트 자동 생성 등 시험 실무의 업무 흐름을 디지털 전환한 서비스입니다.
 									<br>
-									시험별 프로토콜 구성, 시험군 샘플 분류, 문서 템플릿 기반의 리포트 출력 기능을 통해 시험 결과의 정확도와 처리 속도를 모두 개선할 수 있습니다.
+									임상 실험을 하는 과정을 디지털화하여 업무 자동화를 목표로 구축된 시스템입니다.
 								</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 레거시 시스템의 1:1 테이블 구조를 비즈니스 확장 요구사항에 맞춰 1:N 구조로 전환하기 위해 연관된 30여 개 API의 영향도 분석 및 단계적 리팩토링을 통해 데이터 무결성을 보장하면서 불필요한 조인 쿼리 개선을 통해 조회 성능 40% 개선</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 텍스트 매칭 정확도 향상을 위해 투포인터 + 트라이 알고리즘 조합으로 OCR 좌표 매핑 시스템 구현</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 마이그레이션 안정성 확보를 위해 jdbc Template을 이용한 Bulk Query + 트랜잭션 분할 전략으로 500만 건 중단 이관 달성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 다중 데이터베이스 환경에서 데이터 정합성 보장을 위해 Spring의 DataSource 활용한 Master/Slave DataSource 분리 및 트랜잭션 레벨별 라우팅 로직 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 다중 데이터베이스 환경에서 데이터 정합성 보장을 위해 @Transactional 어노테이션 기반 Master/Slave DataSource 자동 라우팅 구현 (읽기 전용 트랜잭션은 Slave, 쓰기 트랜잭션은 Master로 분기)</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증을 위해 불필요한 Native Query → QueryDSL 전환으로 런타임 오류 95% 감소</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리를 위해 Spring Batch + Cron 스케줄링 기반 상태 변경 시스템 구현으로 일 평균 200만 건의 성분 데이터 처리 시간 4시간 → 1.5시간으로 62% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 서버 간 통신 보안 강화를 위해 SHA-256 기반 API Key + 환경별 인증 분리 체계 구축으로 무단 접근 시도 차단율 99.7% 달성</p>
@@ -304,7 +302,7 @@
 										<b style="color:#222;">OCR 텍스트 매칭 정확도 문제</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 임상 실험 검사 시 규제 단어 검출을 위해 사용자가 등록한 딕셔너리와 AI 서버에서 분석된 OCR 텍스트를 매칭해야 했습니다. 하지만 OCR 결과가 단어 단위가 아닌 "안 녕"처럼 글자별로 분리되어 오는 경우가 많아 정확한 매칭이 어려웠고, 수만 개의 딕셔너리 단어를 실시간으로 검색하기엔 성능 병목이 발생했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 성능 최적화를 위해 애플리케이션 시작 시 트라이 알고리즘으로 딕셔너리 검색 구조를 미리 구축하고, 사용자가 추가한 새로운 단어들을 매일 아침 배치 작업을 통해 트라이 구조에 반영하여 메모리 효율성과 안정성을 확보했습니다. OCR 텍스트의 분리 문제 해결을 위해 슬라이딩 윈도우 알고리즘을 적용하여 연속된 글자들을 조합해 단어를 재구성하고 딕셔너리와 매칭하도록 구현했습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">성과</span>: 트라이 알고리즘 도입으로 검색 속도가 기존 대비 60% 개선되어 사용자에게 전달하는 응답 속도가 향상되었습니다.
+										<span style="color:#222; font-weight:bold;">성과</span>: 트라이 + 슬라이딩 알고리즘 도입으로 검색 속도가 기존 대비 60% 개선되어 사용자에게 전달하는 응답 속도가 향상되었습니다.
 									</div>
 									<div>
 										<b style="color:#222;">인프라 확장성 및 배포 안정성 개선</b><br><br>
