@@ -205,15 +205,16 @@
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 서비스 확장성과 코드 재사용성 확보를 위해 모노레포 멀티 모듈 아키텍처 구성 및 런타임 시 MSA 형태 서비스 배포 및 관리</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리 병목 해결을 위해 Bulk Insert/Delete + 멀티스레드(vCPU x2) 전략 도입으로 30만 건 기준 30분 → 9분 성능 개선</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리 OOM 방지 및 네트워크 오버헤드 해결을 위해 jdbc Template을 이용한 Bulk Insert/Delete Query 사용 및 비동기 멀티 스레드 전략 도입으로 70만 건 기준 30분 → 2분 성능 개선</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 데이터 정합성과 조회 성능 최적화를 위해 정규화/반정규화 혼합 설계 및 복합 인덱스 구성으로 평균 쿼리 응답 시간 2.5초 → 0.8초로 68% 단축</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 인증/인가 보안 강화를 위해 JWT + Spring Security 기반 다중 인증 체계 및 권한 관리 시스템 구축</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 외부 API 연동 안정성 향상을 위해 WebClient 기반 비동기 통신 및 tooManyRequest 방지를 위한 스레드 슬립 설정 및 retry 3회 전략 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 인증/인가 보안 강화를 위해 JWT + Spring Security + API Key를 통한 다중 인증 체계 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 외부 API 연동 안정성 향상을 위해 WebClient 기반 동기 통신 및 tooManyRequest 방지를 위한 RateLimit 설정 및 지수 백오프를 이용한 retry 3회 전략 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 다른 모듈과의 데이터 통신 시 SAGA 패턴을 적용 및 실패 시 보상 트랜잭션을 적용하여 데이터 일관성 99% 달성</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증과 동적 쿼리 성능 최적화를 위해 JPA + QueryDSL 조합 도입</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 이벤트 기반 비동기 처리로 응답 시간 단축을 위해 EventPublisher + AWS SES/Naver SENS 연동 구현으로 알림 발송 시간 3.2초 → 0.9초로 72% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 장애 대응 시간 단축을 위해 전역 예외 처리 + Slack 실시간 알림 시스템 구축으로 평균 장애 인지 시간 15분 → 3분으로 80% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 배포 안정성과 가용성 확보를 위해 Blue/Green 무중단 배포</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 배치 처리 안정성과 모니터링을 위해 Spring Batch + Cron 스케줄링 기반 데이터 정합성 관리 시스템 구현으로 데이터 불일치 오류 월 평균 12건 → 1건으로 92% 감소</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 반복문을 통하여 처리하던 데이터 수집을 Spring Batch + Cron 스케줄링 기반 구현으로 변경 및 retry 전략 구축하여 데이터 수집 오류 월 평균 12건 → 1건으로 92% 감소</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 수동 API 문서 작성으로 인한 문서-코드 불일치 문제 해결을 위해 Rest Docs + 슬라이스 테스트 환경 구축으로 API 문서 정확도 85% → 100%로 향상</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
@@ -235,10 +236,15 @@
 									<div>
 										<b style="color:#222;">대용량 광고주 데이터 적재/삭제 병목 해결</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 광고주 데이터 대량 적재 요구가 있었고, 해당 데이터는 delete → insert 방식으로 처리해야 했습니다. <br>
-										JPA 메소드로 단건씩 delete/insert를 수행하다 보니 성능 병목이 발생하는 문제를 발견했습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: nativeQuery를 활용해 다건을 한 번에 처리하는 Bulk Delete/Insert 전략을 도입했습니다. <br>
-										삭제/적재 작업을 Queue에 넣고, chunk size 단위로 묶어 일괄 처리하였으며, 서버의 vCPU 개수 x2배만큼 스레드를 생성해 병렬로 작업을 분산시켰습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">성과</span>: 기존에 30만 건의 대용량 데이터 기준으로 30분대 처리되는 속도를 9분대로 처리되도록 개선하였으며, 서비스의 실시간성과 안정성을 크게 높였습니다. 현재는 이에 그치지 않고 MessageQueue를 도입하여 connection pool은 고갈나지 않으며 데이터를 신뢰성 있게 처리할 수 있게 구현중입니다.
+										JPA 메소드로 saveAll(), deleteAll()을 쓰더라도 단건씩 delete/insert를 수행하다 보니 성능 병목이 발생하는 문제를 발견했습니다.<br>
+										또한, Thread Pool을 고정하지 않고 순차적으로 블로킹 형태로 처리를 진행하다 보니 요청이 무한 번 온다는 가정하에는 사용할 수 있는 스레드가 없어 서버가 응답할 수 없는 상황도 발생하고 블로킹으로 인해 스레드 효율성이 떨어지는 것을 발견하였습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: jdbc template을 이용한 nativeQuery를 활용해 다건을 한 번에 처리하는 Bulk Delete/Insert 전략을 도입했습니다. <br>
+										삭제/적재 작업을 Queue에 넣고, chunk size 단위로 묶어 일괄 처리하도록 변경하여 JPA의 hibernate를 우회하도록 하여 OOM 발생 방지 및 다건 처리로 속도를 향상시킬 수 있게 되었습니다.<br>
+										또한, CompletableFuture클래스를 이용하여 비동기/논블로킹 방식으로 멀티 스레드를 이용한 데이터 수집을 진행하여 속도 효율을 향상 시켰습니다.<br>
+										추가적으로, 해당 API에서 처리할 수 있는 스레드 풀을 ThreadTaskExecutor를 통해 고정시켜두고, 요청이 많이 들어오더라도 해당 스레드 내에서 처리할 수 있도록 지정 및 Queue에 대기 시킬 수 있도록 하여 스레드 고갈이 발생하지 않도록 하여, 서버의 가용성을 높였습니다.
+										<br><br>
+										<span style="color:#222; font-weight:bold;">성과</span>: 기존에 70만 건의 대용량 데이터 기준으로 30분대 처리되는 속도를 2분대로 처리되도록 개선하였으며, 서비스의 실시간성과 안정성 및 가용성을 크게 높였습니다.
+										다만, 인프라적으로 MessageQueue를 도입하면 확장성 있는 시스템을 만들 수 있을 거 같아 현재는 기술 검토 중에 있습니다.
 									</div>
 								</div>
 							</div>
@@ -268,16 +274,16 @@
 								</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 레거시 시스템의 1:1 테이블 구조를 비즈니스 확장 요구사항에 맞춰 1:N 구조로 전환하기 위해 연관된 30여 개 API의 영향도 분석 및 단계적 리팩토링을 통해 데이터 무결성을 보장하면서 조회 성능 40% 개선</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 텍스트 매칭 정확도 향상을 위해 투포인터 + 슬라이딩 윈도우 + 트라이 알고리즘 조합으로 OCR 좌표 매핑 시스템 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 마이그레이션 안정성 확보를 위해 Bulk Query + 트랜잭션 분할 전략으로 500만 건 무중단 이관 달성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 다중 데이터베이스 환경에서 데이터 정합성 보장을 위해 Spring의 AbstractRoutingDataSource 활용한 Master/Slave DataSource 분리 및 트랜잭션 레벨별 라우팅 로직 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증을 위해 Native Query → QueryDSL 전환으로 런타임 오류 95% 감소</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리를 위해 Spring Batch + Cron 스케줄링 기반 상태 변경 시스템 구현으로 일 평균 200만 건 데이터 처리 시간 4시간 → 1.5시간으로 62% 단축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 레거시 시스템의 1:1 테이블 구조를 비즈니스 확장 요구사항에 맞춰 1:N 구조로 전환하기 위해 연관된 30여 개 API의 영향도 분석 및 단계적 리팩토링을 통해 데이터 무결성을 보장하면서 불필요한 조인 쿼리 개선을 통해 조회 성능 40% 개선</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 텍스트 매칭 정확도 향상을 위해 투포인터 + 트라이 알고리즘 조합으로 OCR 좌표 매핑 시스템 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 마이그레이션 안정성 확보를 위해 jdbc Template을 이용한 Bulk Query + 트랜잭션 분할 전략으로 500만 건 무중단 이관 달성</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 다중 데이터베이스 환경에서 데이터 정합성 보장을 위해 Spring의 DataSource 활용한 Master/Slave DataSource 분리 및 트랜잭션 레벨별 라우팅 로직 구현</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증을 위해 불필요한 Native Query → QueryDSL 전환으로 런타임 오류 95% 감소</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리를 위해 Spring Batch + Cron 스케줄링 기반 상태 변경 시스템 구현으로 일 평균 200만 건의 성분 데이터 처리 시간 4시간 → 1.5시간으로 62% 단축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 서버 간 통신 보안 강화를 위해 SHA-256 기반 API Key + 환경별 인증 분리 체계 구축으로 무단 접근 시도 차단율 99.7% 달성</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 장애 대응 시간 단축을 위해 GlobalExceptionHandler + Slack 실시간 알림으로 MTTD 70% 감소</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 인프라 가시성 향상을 위해 Terraform IaC + AWS ECS 오토스케일링으로 배포 안정성 99.9% 달성</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 쿼리 성능 최적화를 위해 Explain Plan 분석 및 복합 인덱스 생성으로 Slow Query 4ms → 0.89ms로 78% 단축, 디스크 I/O 23% 감소, 동시 처리 가능 요청 수 30% 증가</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 쿼리 성능 최적화를 위해 Explain Plan 분석 및 복합 인덱스 생성으로 Slow Query 4ms → 0.89ms로 78% 단축</p>
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">기술 스택</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- Java 17, Java 11</p>
@@ -298,13 +304,13 @@
 										<b style="color:#222;">OCR 텍스트 매칭 정확도 문제</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 임상 실험 검사 시 규제 단어 검출을 위해 사용자가 등록한 딕셔너리와 AI 서버에서 분석된 OCR 텍스트를 매칭해야 했습니다. 하지만 OCR 결과가 단어 단위가 아닌 "안 녕"처럼 글자별로 분리되어 오는 경우가 많아 정확한 매칭이 어려웠고, 수만 개의 딕셔너리 단어를 실시간으로 검색하기엔 성능 병목이 발생했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 성능 최적화를 위해 애플리케이션 시작 시 트라이 알고리즘으로 딕셔너리 검색 구조를 미리 구축하고, 사용자가 추가한 새로운 단어들을 매일 아침 배치 작업을 통해 트라이 구조에 반영하여 메모리 효율성과 안정성을 확보했습니다. OCR 텍스트의 분리 문제 해결을 위해 슬라이딩 윈도우 알고리즘을 적용하여 연속된 글자들을 조합해 단어를 재구성하고 딕셔너리와 매칭하도록 구현했습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">성과</span>: 규제 단어 검출 정확도가 크게 향상되어 고객에게 정확한 변경 제안을 제공할 수 있게 되었고, 이로 인해 고객만족도가 35% 향상되었습니다. 또한 트라이 알고리즘 도입으로 검색 속도가 기존 대비 80% 개선되어 실시간 검출이 가능해졌습니다.
+										<span style="color:#222; font-weight:bold;">성과</span>: 트라이 알고리즘 도입으로 검색 속도가 기존 대비 60% 개선되어 반실시간 검출이 가능해졌습니다.
 									</div>
 									<div>
 										<b style="color:#222;">인프라 확장성 및 배포 안정성 개선</b><br><br>
-										<span style="color:#222; font-weight:bold;">문제 상황</span>: 기존에는 EC2 + CodeDeploy + Nginx를 통한 무중단 배포를 사용했지만, 멀티모듈로 프로젝트 구조를 변경할 예정이었습니다. 각 모듈별로 개별 EC2 인스턴스를 관리하고 배포하기에는 확장성이 떨어지고, 인프라 관리가 복잡해지는 문제가 있었습니다. 또한 수동으로 관리되는 인프라 설정으로 인해 환경 일관성과 재현성에 어려움이 있었습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 컨테이너 기반 아키텍처로 전환하여 AWS ECS를 도입하고, 각 모듈을 독립적인 컨테이너로 패키징하여 확장성과 격리성을 확보했습니다. Blue/Green 배포 전략을 통해 무중단 배포를 구현하고, 배포 실패 시 자동 롤백이 가능하도록 ECS 서비스 설정을 구성했습니다. 인프라 관리의 일관성과 재현성을 위해 Terraform을 활용한 IaC(Infrastructure as Code)를 도입하여 모든 인프라 리소스를 코드로 관리하고 버전 제어가 가능하도록 구축했습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">성과</span>: 멀티모듈 환경에서 각 서비스별 독립적인 배포와 확장이 가능해져 개발 생산성이 40% 향상되었습니다. ECS 오토스케일링을 통해 트래픽 증가 시 자동으로 인스턴스가 확장되어 서비스 안정성이 99.9%로 개선되었고, Terraform을 통한 인프라 코드화로 환경 구성 시간이 기존 대비 70% 단축되었습니다.
+										<span style="color:#222; font-weight:bold;">문제 상황</span>: 기존에는 EC2 + CodeDeploy + Nginx를 통한 무중단 배포를 사용했지만, MSA로 프로젝트 구조를 변경할 예정이었습니다. 각 모듈별로 개별 EC2 인스턴스를 관리하고 배포하기에는 확장성이 떨어지고, 인프라 관리가 복잡해지는 문제가 있었습니다. 또한 수동으로 관리되는 인프라 설정으로 인해 환경 일관성과 재현성에 어려움이 있었습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 컨테이너 기반 아키텍처로 전환하여 AWS ECS를 도입하고, 각 모듈을 독립적인 컨테이너로 패키징하여 확장성과 격리성을 확보했습니다. Blue/Green 배포 전략을 통해 무중단 배포를 구현하고, 배포 실패 시 자동 롤백이 가능하도록 ECS 서비스 설정을 구성했습니다. 인프라 관리의 일관성과 재현성을 위해 Terraform을 활용한 IaC(Infrastructure as Code)를 도입하여 중요한 인프라 리소스를 코드로 관리하고 버전 제어가 가능하도록 구축했습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">성과</span>: 멀티모듈 환경에서 각 서비스별 독립적인 배포와 확장이 가능해져 개발 생산성이 42% 향상되었습니다. ECS 오토스케일링을 통해 트래픽 증가 시 자동으로 인스턴스가 확장되어 서비스 안정성이 99.9%로 개선되었고, Terraform을 통한 인프라 코드화로 환경 구성 시간이 기존 대비 70% 단축되었습니다.
 									</div>
 								</div>
 							</div>
