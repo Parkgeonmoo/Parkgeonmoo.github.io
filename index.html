@@ -276,7 +276,7 @@
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">내가 한 업무</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 레거시 시스템의 1:1 테이블 구조를 비즈니스 확장 요구사항에 맞춰 1:N 구조로 전환하기 위해 연관된 30여 개 API의 영향도 분석 및 단계적 리팩토링을 통해 데이터 무결성을 보장하면서 불필요한 조인 쿼리 개선을 통해 조회 성능 40% 개선</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 텍스트 매칭 정확도 향상을 위해 투포인터 + 트라이 알고리즘 조합으로 OCR 좌표 매핑 시스템 구현</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 마이그레이션 안정성 확보를 위해 jdbc Template을 이용한 Bulk Query + 트랜잭션 분할 전략으로 500만 건 무중단 이관 달성</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 마이그레이션 안정성 확보를 위해 jdbc Template을 이용한 Bulk Query + 트랜잭션 분할 전략으로 500만 건 중단 이관 달성</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 다중 데이터베이스 환경에서 데이터 정합성 보장을 위해 Spring의 DataSource 활용한 Master/Slave DataSource 분리 및 트랜잭션 레벨별 라우팅 로직 구현</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 컴파일 타임 쿼리 검증을 위해 불필요한 Native Query → QueryDSL 전환으로 런타임 오류 95% 감소</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 대용량 데이터 처리를 위해 Spring Batch + Cron 스케줄링 기반 상태 변경 시스템 구현으로 일 평균 200만 건의 성분 데이터 처리 시간 4시간 → 1.5시간으로 62% 단축</p>
