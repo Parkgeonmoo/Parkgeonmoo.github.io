@@ -28,6 +28,57 @@
 	<link rel="stylesheet" href="css/css/team.css">
 	
 	<style>
+		/* Core Strengths h3 밑줄 강제 제거 */
+		#strengths-section h3,
+		#strengths-section h3::before,
+		#strengths-section h3::after,
+		#strengths-section .mb-3,
+		#strengths-section .mb-3::before,
+		#strengths-section .mb-3::after,
+		.services-1 h3,
+		.services-1 h3::before,
+		.services-1 h3::after,
+		.services-1 .mb-3,
+		.services-1 .mb-3::before,
+		.services-1 .mb-3::after,
+		.services-1 .desc h3,
+		.services-1 .desc h3::before,
+		.services-1 .desc h3::after {
+			text-decoration: none !important;
+			border: none !important;
+			border-bottom: 0px solid transparent !important;
+			border-bottom-width: 0 !important;
+			border-bottom-style: none !important;
+			border-bottom-color: transparent !important;
+			border-top: none !important;
+			border-left: none !important;
+			border-right: none !important;
+			-webkit-text-decoration: none !important;
+			text-decoration-line: none !important;
+			text-decoration-style: none !important;
+			box-shadow: none !important;
+			outline: none !important;
+			background-image: none !important;
+			content: none !important;
+		}
+		
+		/* 인쇄 시에도 동일하게 적용 */
+		@media print {
+			#strengths-section h3,
+			#strengths-section h3::before,
+			#strengths-section h3::after,
+			.services-1 h3,
+			.services-1 h3::before,
+			.services-1 h3::after {
+				text-decoration: none !important;
+				border: none !important;
+				border-bottom: none !important;
+				box-shadow: none !important;
+			}
+		}
+	</style>
+	
+	<style>
 		/* SVG 아이콘 웹 & 인쇄 강제 출력 */
 		svg {
 			-webkit-print-color-adjust: exact !important;
@@ -60,14 +111,17 @@
 		*,
 		strong,
 		b,
+		h1, h2, h3, h4, h5, h6,
 		.services-1,
 		.services-1 *,
+		.services-1 h3,
 		.services-1 strong,
 		.services-1 p,
 		.services-1 p *,
 		.services-1 p strong,
 		#strengths-section,
 		#strengths-section *,
+		#strengths-section h3,
 		#strengths-section strong,
 		#strengths-section p strong,
 		.resume-wrap,
@@ -75,6 +129,7 @@
 		.resume-wrap strong {
 			text-decoration: none !important;
 			border-bottom: none !important;
+			border-bottom-width: 0 !important;
 			text-decoration-line: none !important;
 			text-decoration-style: none !important;
 			text-decoration-color: transparent !important;
@@ -309,6 +364,9 @@
 			#strengths-section h3 {
 				font-size: 11pt !important;
 				margin-bottom: 8px !important;
+				text-decoration: none !important;
+				border-bottom: none !important;
+				border-bottom-width: 0 !important;
 			}
 			
 			#strengths-section p {
@@ -326,7 +384,13 @@
 			#strengths-section strong,
 			#strengths-section span,
 			#strengths-section p,
+			#strengths-section h1,
+			#strengths-section h2,
 			#strengths-section h3,
+			#strengths-section h4,
+			#strengths-section h5,
+			#strengths-section h6,
+			#strengths-section .mb-3,
 			#strengths-section abbr {
 				text-decoration: none !important;
 				-webkit-text-decoration: none !important;
@@ -819,7 +883,7 @@
 							</svg>
 						</span>
 						<div class="desc">
-							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">대용량 데이터 처리</h3>
+							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">대용량 데이터 처리</h3>
 							<p style="color: #666; line-height: 1.6;">1000만 건 기준<br>
 								<strong style="color: #667eea; text-decoration: none !important;">4시간 30분에서 1시간으로</strong>
 								<br>Bulk Query + 가상 스레드<br>병렬처리로 78% 성능 개선
@@ -836,7 +900,7 @@
 							</svg>
 						</span>
 						<div class="desc">
-							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">성능 최적화</h3>
+							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">성능 최적화</h3>
 							<p style="color: #666; line-height: 1.6;">쿼리 응답 시간<br>
 								<strong style="color: #667eea; text-decoration: none !important;">2.5초에서 0.8초로</strong>
 								<br>인덱스 최적화 +<br>정규화/반정규화 혼합 설계
@@ -853,7 +917,7 @@
 							</svg>
 						</span>
 						<div class="desc">
-							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">시스템 안정성</h3>
+							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">시스템 안정성</h3>
 							<p style="color: #666; line-height: 1.6;">데이터 일관성<br>
 								<strong style="color: #667eea; text-decoration: none !important;">99 퍼센트 달성</strong>
 								<br>Transaction OutBox 패턴 +<br>SAGA 패턴으로 분산 환경 데이터 일관성 확보
@@ -870,7 +934,7 @@
 							</svg>
 						</span>
 						<div class="desc">
-							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">인프라 자동화</h3>
+							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">인프라 자동화</h3>
 							<p style="color: #666; line-height: 1.6;">CI/CD 자동화 및 안정성<br>
 								<strong style="color: #667eea; text-decoration: none !important;">EC2에서 ECS로</strong>
 								<br>컨테이너 기반 배포 +<br>Terraform IaC 구축
