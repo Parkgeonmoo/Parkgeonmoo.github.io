@@ -5,6 +5,7 @@
 	<title>ParkGeonWoo - Resume</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
@@ -27,6 +28,94 @@
 	<link rel="stylesheet" href="css/css/team.css">
 	
 	<style>
+		/* SVG 아이콘 웹 & 인쇄 강제 출력 */
+		svg {
+			-webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact !important;
+			display: inline-block !important;
+			color-adjust: exact !important;
+		}
+		
+		/* SVG fill 색상 강제 */
+		svg[fill="white"],
+		svg[fill="white"] path,
+		svg[fill="white"] circle,
+		svg[fill="white"] rect {
+			fill: white !important;
+			-webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact !important;
+		}
+		
+		/* Core Strengths SVG */
+		#strengths-section svg,
+		#strengths-section svg path,
+		#strengths-section svg line,
+		#strengths-section svg polygon {
+			stroke: #667eea !important;
+			-webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact !important;
+		}
+
+		/* 웹 화면용 밑줄 완전 제거 */
+		*,
+		strong,
+		b,
+		.services-1,
+		.services-1 *,
+		.services-1 strong,
+		.services-1 p,
+		.services-1 p *,
+		.services-1 p strong,
+		#strengths-section,
+		#strengths-section *,
+		#strengths-section strong,
+		#strengths-section p strong,
+		.resume-wrap,
+		.resume-wrap *,
+		.resume-wrap strong {
+			text-decoration: none !important;
+			border-bottom: none !important;
+			text-decoration-line: none !important;
+			text-decoration-style: none !important;
+			text-decoration-color: transparent !important;
+			-webkit-text-decoration: none !important;
+			-webkit-text-decoration-line: none !important;
+			-webkit-text-decoration-style: none !important;
+		}
+		
+		@media print {
+			/* hr 구분선 인쇄 시 표시 */
+			hr {
+				border-top: 1px solid #eee !important;
+				display: block !important;
+				height: 1px !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+			/* SVG 인쇄 시 확실하게 보이도록 */
+			.icon svg {
+				display: block !important;
+				min-width: 28px !important;
+				min-height: 28px !important;
+			}
+			
+			#strengths-section .icon svg {
+				display: block !important;
+				width: 60px !important;
+				height: 60px !important;
+			}
+			
+			/* 모든 fill white SVG 강제 */
+			svg[fill="white"],
+			svg[fill="white"] * {
+				fill: white !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+		}
+	</style>
+	
+	<style>
 		/* PDF/인쇄 최적화 스타일 */
 		@media print {
 			/* 배경색과 그라데이션 강제 출력 */
@@ -36,10 +125,33 @@
 				color-adjust: exact !important;
 			}
 			
+			/* 모든 텍스트 장식 완전 제거 */
+			*,
+			*::before,
+			*::after {
+				text-decoration: none !important;
+				-webkit-text-decoration: none !important;
+				text-decoration-line: none !important;
+				text-decoration-style: none !important;
+				text-decoration-color: transparent !important;
+				border-bottom: none !important;
+				box-shadow: none !important;
+				text-shadow: none !important;
+			}
+			
+			/* 모든 요소의 밑줄 강제 제거 */
+			html *, body *, div *, span *, p *, h1 *, h2 *, h3 *, h4 *, h5 *, h6 *,
+			b *, strong *, i *, em *, a *, abbr *, u *, ins * {
+				text-decoration: none !important;
+				border-bottom: 0 !important;
+				border-bottom-width: 0 !important;
+				border-bottom-style: none !important;
+			}
+			
 			/* 페이지 설정 - 여백 최소화 */
 			@page {
 				size: A4;
-				margin: 0.5cm;
+				margin: 0.4cm;
 			}
 			
 			html, body {
@@ -77,39 +189,218 @@
 			
 			.container {
 				max-width: 100% !important;
-				padding: 0 15px !important;
+				padding: 0 10px !important;
 			}
 			
-			/* 섹션 간격 조정 */
+			/* 섹션 간격 최소화 */
 			.ftco-section {
-				padding: 1em 0 !important;
+				padding: 0.3em 0 !important;
+			}
+			
+			#resume-section {
+				padding: 0 !important;
 			}
 			
 			.page {
-				margin-bottom: 1.5em !important;
+				margin-bottom: 0.3em !important;
+			}
+			
+			.page h2.heading {
+				margin-top: 0.3em !important;
+				margin-bottom: 0.4em !important;
+			}
+			
+			/* Collaboration, Certificate, Education 섹션 간격 최소화 */
+			#page-6,
+			#page-4,
+			#page-5 {
+				margin-bottom: 0.2em !important;
+				padding-top: 0 !important;
+			}
+			
+			#page-6 h2.heading,
+			#page-4 h2.heading,
+			#page-5 h2.heading {
+				margin-top: 0.2em !important;
+				margin-bottom: 0.3em !important;
 			}
 			
 			/* About Me 섹션 최적화 */
 			.ftco-about {
-				padding: 1em 0 !important;
+				padding: 0.5em 0 !important;
 				page-break-inside: avoid;
+				page-break-after: avoid !important;
 			}
 			
 			.ftco-about .container {
 				padding: 0 !important;
 			}
 			
-			/* Core Strengths 최적화 */
+			.ftco-about .row {
+				display: flex !important;
+				flex-wrap: wrap !important;
+			}
+			
+			.ftco-about .col-md-6 {
+				flex: 0 0 50% !important;
+				max-width: 50% !important;
+				padding: 5px !important;
+			}
+			
+			.ftco-about .row > div {
+				padding: 5px !important;
+			}
+			
+			/* Core Strengths - About Me와 같은 페이지, 이후 페이지 나누기 */
 			#strengths-section {
 				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
 				-webkit-print-color-adjust: exact !important;
-				padding: 2em 0 !important;
-				page-break-inside: avoid;
+				padding: 1em 0 !important;
+				page-break-inside: avoid !important;
+				page-break-before: avoid !important;
+				page-break-after: always !important;
+			}
+			
+			#strengths-section .container {
+				padding: 0 10px !important;
+			}
+			
+			#strengths-section .row {
+				display: flex !important;
+				flex-wrap: wrap !important;
+			}
+			
+			#strengths-section .col-md-6,
+			#strengths-section .col-lg-3 {
+				flex: 0 0 25% !important;
+				max-width: 25% !important;
+				padding: 3px !important;
 			}
 			
 			#strengths-section .services-1 {
 				background: white !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+				padding: 15px !important;
 				box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+				page-break-inside: avoid;
+			}
+			
+			#strengths-section .services-1 .icon,
+			#strengths-section .services-1 .icon *,
+			#strengths-section .services-1 span.icon {
+				color: #667eea !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+			
+			#strengths-section .icon {
+				font-size: 35px !important;
+				color: #667eea !important;
+			}
+			
+			#strengths-section .icon i,
+			#strengths-section .icon i::before {
+				color: #667eea !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+			
+			#strengths-section h3 {
+				font-size: 11pt !important;
+				margin-bottom: 8px !important;
+			}
+			
+			#strengths-section p {
+				font-size: 9pt !important;
+				line-height: 1.3 !important;
+			}
+			
+			/* Core Strengths 내 모든 텍스트 장식 제거 */
+			#strengths-section,
+			#strengths-section *,
+			#strengths-section *::before,
+			#strengths-section *::after,
+			#strengths-section a,
+			#strengths-section b,
+			#strengths-section strong,
+			#strengths-section span,
+			#strengths-section p,
+			#strengths-section h3,
+			#strengths-section abbr {
+				text-decoration: none !important;
+				-webkit-text-decoration: none !important;
+				border-bottom: 0 !important;
+				border-bottom-width: 0 !important;
+				border-bottom-style: none !important;
+				border: none !important;
+				outline: none !important;
+				box-shadow: none !important;
+			}
+			
+			/* Tech Stack - 새 페이지 시작, Experience와 같은 페이지 */
+			#page-1 {
+				page-break-before: always !important;
+				page-break-after: avoid !important;
+			}
+			
+			#page-1 .row {
+				display: flex !important;
+				flex-wrap: wrap !important;
+			}
+			
+			#page-1 .col-md-6 {
+				flex: 0 0 50% !important;
+				max-width: 50% !important;
+				padding: 5px !important;
+			}
+			
+			#page-1 .skills-category {
+				margin-bottom: 0.5em !important;
+			}
+			
+			#page-1 h3 {
+				font-size: 11pt !important;
+				margin-bottom: 5px !important;
+			}
+			
+			#page-1 ul li {
+				margin-bottom: 3px !important;
+				font-size: 9pt !important;
+			}
+			
+			/* Experience - Tech Stack과 같은 페이지, 공백 최소화 */
+			#page-2 {
+				page-break-before: avoid !important;
+				page-break-after: always !important;
+				page-break-inside: auto;
+			}
+			
+			/* Technical Highlights - 새 페이지, 이후 자연스럽게 이어짐 */
+			#page-3 {
+				page-break-before: always !important;
+				page-break-after: auto !important;
+				page-break-inside: auto;
+			}
+			
+			/* Collaboration - 자연스럽게 이어짐 */
+			#page-6 {
+				page-break-before: auto !important;
+				page-break-after: auto !important;
+				page-break-inside: auto;
+			}
+			
+			/* Certificate - 자연스럽게 이어짐 */
+			#page-4 {
+				page-break-before: auto !important;
+				page-break-after: auto !important;
+				page-break-inside: avoid;
+			}
+			
+			/* Education - 자연스럽게 이어짐 */
+			#page-5 {
+				page-break-before: auto !important;
+				page-break-after: auto !important;
 				page-break-inside: avoid;
 			}
 			
@@ -117,13 +408,13 @@
 			.resume-wrap {
 				page-break-inside: avoid;
 				break-inside: avoid;
-				margin-bottom: 1em;
+				margin-bottom: 0.8em;
 			}
 			
 			.expertise-category {
 				page-break-inside: avoid;
 				break-inside: avoid;
-				margin-bottom: 1.5em !important;
+				margin-bottom: 1em !important;
 			}
 			
 			.troubleshooting-inner {
@@ -131,57 +422,199 @@
 				break-inside: avoid;
 			}
 			
-			/* 큰 섹션은 페이지 나누기 허용 */
-			#page-2,
-			#page-3 {
-				page-break-inside: auto;
-			}
-			
-			/* 링크 색상 유지 */
-			a {
+			/* 링크 및 텍스트 장식 제거 */
+			a,
+			a:link,
+			a:visited,
+			a:hover,
+			a:active {
 				color: inherit !important;
 				text-decoration: none !important;
+				border: none !important;
+				outline: none !important;
+			}
+			
+			/* 모든 텍스트 장식 제거 */
+			* {
+				text-decoration: none !important;
+				border-bottom: none !important;
+			}
+			
+			/* 모든 태그 텍스트 장식 확실히 제거 */
+			*,
+			*::before,
+			*::after,
+			b, strong, span, p, li, div, h1, h2, h3, h4, h5, h6,
+			abbr, acronym, address, cite, code, del, dfn, em, ins, kbd, q, samp, var,
+			u, i, a, small, mark, sub, sup,
+			.services-1,
+			.services-1 *,
+			.services-1 strong,
+			.services-1 p strong,
+			#strengths-section strong,
+			p strong {
+				text-decoration: none !important;
+				border-bottom: 0 !important;
+				border-bottom-width: 0 !important;
+				border-bottom-style: none !important;
+				border-bottom-color: transparent !important;
+				text-decoration-line: none !important;
+				text-decoration-style: none !important;
+				text-decoration-color: transparent !important;
+				-webkit-text-decoration: none !important;
+				-webkit-text-decoration-line: none !important;
+				-webkit-text-decoration-style: none !important;
+				-webkit-text-decoration-color: transparent !important;
+				text-underline-offset: 0 !important;
+				box-shadow: none !important;
+			}
+			
+			/* 모든 요소 밑줄 강제 제거 */
+			*,
+			strong,
+			b,
+			span,
+			.services-1,
+			.services-1 *,
+			.services-1 p,
+			.services-1 p *,
+			.services-1 strong,
+			.services-1 span,
+			.services-1 br + strong,
+			#strengths-section,
+			#strengths-section *,
+			#strengths-section strong,
+			#strengths-section p strong,
+			.resume-wrap,
+			.resume-wrap *,
+			.resume-wrap strong,
+			#page-5,
+			#page-5 *,
+			#page-5 strong {
+				text-decoration: none !important;
+				border-bottom: 0 !important;
+				text-underline-offset: 0 !important;
+				text-decoration-line: none !important;
+				text-decoration-style: none !important;
+				-webkit-text-decoration: none !important;
+			}
+			
+			/* abbr과 acronym 특별 처리 */
+			abbr,
+			abbr[title],
+			acronym,
+			acronym[title] {
+				border-bottom: 0 !important;
+				border-bottom-width: 0 !important;
+				text-decoration: none !important;
+				cursor: default !important;
+			}
+			
+			/* 인쇄 전용 스타일 강제 */
+			@page {
+				margin: 0.4cm;
+			}
+			
+			/* Chrome 인쇄용 추가 스타일 */
+			.services-1 b,
+			.services-1 strong,
+			.services-1 span,
+			.services-1 p,
+			.services-1 p *,
+			.services-1 .desc *,
+			#strengths-section p,
+			#strengths-section p *,
+			#strengths-section span {
+				text-decoration: none !important;
+				-webkit-text-decoration: none !important;
+				border: none !important;
+				border-bottom: 0 !important;
+				border-bottom-width: 0 !important;
+				border-bottom-style: none !important;
+			}
+			
+			/* Chrome이 자동으로 추가하는 링크 스타일 제거 */
+			a[x-apple-data-detectors],
+			a[href^="tel:"],
+			a[href^="mailto:"] {
+				text-decoration: none !important;
+				color: inherit !important;
 			}
 			
 			/* Footer 최적화 */
 			footer {
-				padding: 1em 0 !important;
+				padding: 0.5em 0 !important;
 			}
 			
 			footer .container {
-				padding: 0 15px !important;
+				padding: 0 10px !important;
 			}
 			
-			/* 폰트 크기 */
+			/* Have a Questions 섹션 및 Copyright 숨김 */
+			.ftco-footer-widget,
+			footer .row,
+			footer .text-center,
+			footer p {
+				display: none !important;
+			}
+			
+			footer {
+				background: white !important;
+			}
+			
+			/* 폰트 크기 최소화 */
 			body {
-				font-size: 10pt;
-				line-height: 1.3;
+				font-size: 9pt;
+				line-height: 1.25;
 			}
 			
 			h1 {
-				font-size: 20pt;
-				margin: 0.5em 0;
+				font-size: 18pt;
+				margin: 0.3em 0;
 			}
 			
 			h2 {
-				font-size: 16pt;
-				margin: 0.4em 0;
+				font-size: 14pt;
+				margin: 0.3em 0;
 			}
 			
 			h3 {
-				font-size: 13pt;
-				margin: 0.3em 0;
+				font-size: 12pt;
+				margin: 0.2em 0;
 			}
 			
 			p {
-				margin: 0.3em 0;
+				margin: 0.2em 0;
+				line-height: 1.3;
 			}
 			
-			/* 아이콘 */
+			/* 아이콘 강제 출력 */
 			.icon,
+			.icon::before,
 			.flaticon-ideas,
-			.flaticon-idea {
-				color: #3e64ff !important;
+			.flaticon-ideas::before,
+			.flaticon-idea,
+			.flaticon-idea::before,
+			.flaticon-analysis,
+			.flaticon-analysis::before,
+			.flaticon-flasks,
+			.flaticon-flasks::before,
+			.flaticon-innovation,
+			.flaticon-innovation::before,
+			i[class^="flaticon-"],
+			i[class^="flaticon-"]::before {
+				color: #667eea !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+				display: inline-block !important;
+				font-family: "Flaticon" !important;
+				font-style: normal !important;
+				font-weight: normal !important;
+				font-variant: normal !important;
+				text-transform: none !important;
+				line-height: 1 !important;
+				-webkit-font-smoothing: antialiased !important;
+				-moz-osx-font-smoothing: grayscale !important;
 			}
 			
 			/* 배경색 강제 출력 */
@@ -193,23 +626,33 @@
 			
 			/* 카드 스타일 */
 			[style*="border-radius"] {
-				border-radius: 10px !important;
+				border-radius: 8px !important;
 			}
 			
-			/* 여백 조정 */
+			/* 여백 최소화 */
 			.row {
 				margin: 0 !important;
 			}
 			
 			.col-md-6,
 			.col-lg-3 {
-				padding: 5px !important;
+				padding: 3px !important;
 			}
 			
 			/* TroubleShooting 박스 */
 			.troubleshooting-inner {
-				margin-top: 1em !important;
-				padding-top: 1em !important;
+				margin-top: 0.8em !important;
+				padding-top: 0.8em !important;
+			}
+			
+			/* ul, li 간격 최소화 */
+			ul {
+				margin: 0.3em 0 !important;
+				padding-left: 20px !important;
+			}
+			
+			li {
+				margin-bottom: 0.2em !important;
 			}
 		}
 	</style>
@@ -367,45 +810,71 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
 					<div class="services-1" style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-						<span class="icon" style="font-size: 50px; color: #667eea;">
-							<i class="flaticon-analysis"></i>
+						<span class="icon" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+							<!-- 차트 SVG -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<line x1="18" y1="20" x2="18" y2="10"></line>
+								<line x1="12" y1="20" x2="12" y2="4"></line>
+								<line x1="6" y1="20" x2="6" y2="14"></line>
+							</svg>
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">대용량 데이터 처리</h3>
-							<p style="color: #666; line-height: 1.6;">1000만 건 기준<br><b style="color: #667eea;">4시간 30분 → 1시간</b><br>Bulk Query + 가상 스레드<br>병렬처리로 78% 성능 개선</p>
+							<p style="color: #666; line-height: 1.6;">1000만 건 기준<br>
+								<strong style="color: #667eea; text-decoration: none !important;">4시간 30분에서 1시간으로</strong>
+								<br>Bulk Query + 가상 스레드<br>병렬처리로 78% 성능 개선
+							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
 					<div class="services-1" style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-						<span class="icon" style="font-size: 50px; color: #667eea;">
-							<i class="flaticon-flasks"></i>
+						<span class="icon" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+							<!-- 번개 SVG -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+							</svg>
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">성능 최적화</h3>
-							<p style="color: #666; line-height: 1.6;">쿼리 응답 시간<br><b style="color: #667eea;">2.5초 → 0.8초</b><br>인덱스 최적화 +<br>정규화/반정규화 혼합 설계</p>
+							<p style="color: #666; line-height: 1.6;">쿼리 응답 시간<br>
+								<strong style="color: #667eea; text-decoration: none !important;">2.5초에서 0.8초로</strong>
+								<br>인덱스 최적화 +<br>정규화/반정규화 혼합 설계
+							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
 					<div class="services-1" style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-						<span class="icon" style="font-size: 50px; color: #667eea;">
-							<i class="flaticon-ideas"></i>
+						<span class="icon" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+							<!-- 방패 SVG -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+							</svg>
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">시스템 안정성</h3>
-							<p style="color: #666; line-height: 1.6;">데이터 일관성<br><b style="color: #667eea;">99% 달성</b><br>Transaction OutBox 패턴 +<br>SAGA 패턴으로 분산 환경 데이터 일관성 확보</p>
+							<p style="color: #666; line-height: 1.6;">데이터 일관성<br>
+								<strong style="color: #667eea; text-decoration: none !important;">99 퍼센트 달성</strong>
+								<br>Transaction OutBox 패턴 +<br>SAGA 패턴으로 분산 환경 데이터 일관성 확보
+							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
 					<div class="services-1" style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-						<span class="icon" style="font-size: 50px; color: #667eea;">
-							<i class="flaticon-innovation"></i>
+						<span class="icon" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+							<!-- 인프라/클라우드 SVG -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+							</svg>
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold;">인프라 자동화</h3>
-							<p style="color: #666; line-height: 1.6;">CI/CD 자동화 및 안정성<br><b style="color: #667eea;">EC2 → ECS</b><br>컨테이너 기반 배포 +<br>Terraform IaC 구축</p>
+							<p style="color: #666; line-height: 1.6;">CI/CD 자동화 및 안정성<br>
+								<strong style="color: #667eea; text-decoration: none !important;">EC2에서 ECS로</strong>
+								<br>컨테이너 기반 배포 +<br>Terraform IaC 구축
+							</p>
 						</div>
 					</div>
 				</div>
@@ -500,10 +969,7 @@
 
 
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
+							<div class="text">
 								<span class="date">2025.04 ~ (재직중)</span>
 								<h2>SearchM</h2>
 								<span class="position">Backend Engineer</span>
@@ -569,10 +1035,7 @@
 
 						<!-- CDRI 경험 -->
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
+							<div class="text">
 								<span class="date">2024.03 ~ 2025.04(1년 2개월)</span>
 								<h2>CDRI</h2>
 								<span class="position">Backend Engineer</span>
@@ -626,10 +1089,7 @@
 						<br>
 
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
+							<div class="text">
 								<span class="date">2021.04-2023.02(1년 10개월)</span>
 								<h2>코그넷나인</h2>
 								<span class="position">Cognitive Engineer</span>
@@ -669,7 +1129,7 @@
 
 						<div class="expertise-category" style="margin-bottom: 35px;">
 							<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px; font-size: 20px;">
-								<span style="margin-right: 10px;">🚀</span>대용량 데이터 처리 & 성능 최적화
+								대용량 데이터 처리 & 성능 최적화
 							</h3>
 							<ul style="list-style: none; padding-left: 30px; line-height: 1.9;">
 								<li style="margin-bottom: 10px;">
@@ -689,7 +1149,7 @@
 
 						<div class="expertise-category" style="margin-bottom: 35px;">
 							<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px; font-size: 20px;">
-								<span style="margin-right: 10px;">🔄</span>분산 시스템 & 메시징
+								분산 시스템 & 메시징
 							</h3>
 							<ul style="list-style: none; padding-left: 30px; line-height: 1.9;">
 								<li style="margin-bottom: 10px;">
@@ -709,7 +1169,7 @@
 
 						<div class="expertise-category" style="margin-bottom: 35px;">
 							<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px; font-size: 20px;">
-								<span style="margin-right: 10px;">☁️</span>인프라 & DevOps
+								인프라 & DevOps
 							</h3>
 							<ul style="list-style: none; padding-left: 30px; line-height: 1.9;">
 								<li style="margin-bottom: 10px;">
@@ -733,7 +1193,7 @@
 
 						<div class="expertise-category" style="margin-bottom: 35px;">
 							<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px; font-size: 20px;">
-								<span style="margin-right: 10px;">📝</span>API 설계 & 협업
+								API 설계 & 협업
 							</h3>
 							<ul style="list-style: none; padding-left: 30px; line-height: 1.9;">
 								<li style="margin-bottom: 10px;">
@@ -784,13 +1244,10 @@
 							<hr style="border-top:1px solid #eee; margin-top:10px; margin-bottom:1px;">
 					</div>
 
-					<div id="page-4" class="page two" style="margin-top:0px; padding-top:0px;">
+				<div id="page-4" class="page two" style="margin-top:0px; padding-top:0px;">
 					<h2 class="heading" style="margin-top:0px; padding-top:0px;">Certificate</h2>
 					<div class="resume-wrap d-flex ftco-animate">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-ideas"></span>
-						</div>
-						<div class="text pl-3">
+						<div class="text">
 							<span class="date">2022.01.15</span>
 							<h2>Google Cloud Professional Cloud Architect</h2>
 							
@@ -798,10 +1255,7 @@
 						</div>
 					</div>
 					<div class="resume-wrap d-flex ftco-animate">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-ideas"></span>
-						</div>
-						<div class="text pl-3">
+						<div class="text">
 							<span class="date">2022.03.04</span>
 							<h2>Google Cloud Professional Data Engineer</h2>
 							
@@ -809,25 +1263,20 @@
 						</div>
 					</div>
 					<div class="resume-wrap d-flex ftco-animate">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-ideas"></span>
-						</div>
-						<div class="text pl-3">
+						<div class="text">
 							<span class="date">2022.09.29</span>
 							<h2>Google Cloud Professional Machine Learning Engineer</h2>
 							
 							<p>- 구글 클라우드 머신러닝 엔지니어 취득</p>
 						</div>
-						</div>
+					</div>
+					<hr style="border-top:1px solid #eee; margin-top:10px; margin-bottom:1px;">
 				</div>
 
 				<div id="page-5" class="page four">
 					<h2 class="heading">Education</h2>
 					<div class="resume-wrap d-flex ftco-animate">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-ideas"></span>
-						</div>
-						<div class="text pl-3">
+						<div class="text">
 							<span class="date">2017.03-2021.02</span>
 							<h2>컴퓨터공학 전공</h2>
 							<span class="position">한림대학교</span>
