@@ -25,6 +25,128 @@
 	<link rel="stylesheet" href="css/css/button.css">
 	<link rel="stylesheet" href="css/css/toggle.css">
 	<link rel="stylesheet" href="css/css/team.css">
+	
+	<style>
+		/* PDF/인쇄 최적화 스타일 */
+		@media print {
+			/* 배경색과 그라데이션 강제 출력 */
+			* {
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+				color-adjust: exact !important;
+			}
+			
+			/* 페이지 설정 */
+			@page {
+				size: A4;
+				margin: 1cm;
+			}
+			
+			body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			
+			/* 네비게이션 메뉴 숨김 */
+			.navbar,
+			.mouse,
+			#ftco-loader {
+				display: none !important;
+			}
+			
+			/* 사이드 메뉴 숨김 */
+			#navi {
+				display: none !important;
+			}
+			
+			/* 메인 컨텐츠 너비 조정 */
+			.ftco-section .container .row .col-md-3 {
+				display: none !important;
+			}
+			
+			.ftco-section .container .row .col-md-9 {
+				max-width: 100% !important;
+				flex: 0 0 100% !important;
+			}
+			
+			/* 섹션 페이지 나누기 방지 */
+			.resume-wrap,
+			.expertise-category,
+			.troubleshooting-inner {
+				page-break-inside: avoid;
+				break-inside: avoid;
+			}
+			
+			/* 새 섹션은 새 페이지에서 시작 */
+			.page {
+				page-break-before: auto;
+			}
+			
+			/* About Me 섹션 */
+			.ftco-about {
+				page-break-inside: avoid;
+			}
+			
+			/* Core Strengths 배경 유지 */
+			#strengths-section {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+				-webkit-print-color-adjust: exact !important;
+			}
+			
+			/* 카드 그림자 유지 */
+			.services-1 {
+				box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+			}
+			
+			/* 링크 색상 유지 */
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			
+			/* Footer 간소화 */
+			footer {
+				page-break-before: auto;
+			}
+			
+			/* 폰트 크기 조정 */
+			body {
+				font-size: 11pt;
+				line-height: 1.4;
+			}
+			
+			h1 {
+				font-size: 24pt;
+			}
+			
+			h2 {
+				font-size: 18pt;
+			}
+			
+			h3 {
+				font-size: 14pt;
+			}
+			
+			/* 여백 최적화 */
+			.ftco-section {
+				padding: 2em 0 !important;
+			}
+			
+			/* 아이콘 색상 유지 */
+			.icon,
+			.flaticon-ideas,
+			.flaticon-idea {
+				color: #3e64ff !important;
+			}
+			
+			/* 배경색 있는 박스 유지 */
+			[style*="background"] {
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+		}
+	</style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -560,9 +682,9 @@
 						</div>
 					</div>
 
-						<div id="page-6" class="page two">
-							<h2 class="heading">Collaboration</h2>
-							<p style="color: #666; margin-bottom: 30px;">팀과 함께 성장하며 만들어낸 성과</p>
+					<div id="page-6" class="page two">
+						<h2 class="heading">Collaboration</h2>
+						<p style="color: #666; margin-bottom: 30px;">팀과 함께 성장하며 만들어낸 성과</p>
 
 							<span style="color:#3e64ff; font-weight:bold; font-size:18px;">Communication</span>
 							<div style="margin-top:15px; margin-bottom:25px;">
@@ -593,63 +715,60 @@
 								</p>
 							</div>
 							<hr style="border-top:1px solid #eee; margin-top:10px; margin-bottom:1px;">
-						</div>
 					</div>
 
 					<div id="page-4" class="page two" style="margin-top:0px; padding-top:0px;">
-							<h2 class="heading" style="margin-top:0px; padding-top:0px;">Certificate</h2>
-							<div class="resume-wrap d-flex ftco-animate">
-								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-ideas"></span>
-								</div>
-								<div class="text pl-3">
-									<span class="date">2022.01.15</span>
-									<h2>Google Cloud Professional Cloud Architect</h2>
-									
-									<p>- 구글 클라우드 아키텍트 취득</p>
-								</div>
-							</div>
-							<div class="resume-wrap d-flex ftco-animate">
-								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-ideas"></span>
-								</div>
-								<div class="text pl-3">
-									<span class="date">2022.03.04</span>
-									<h2>Google Cloud Professional Data Engineer</h2>
-									
-									<p>- 구글 클라우드 데이터 엔지니어 취득</p>
-								</div>
-							</div>
-							<div class="resume-wrap d-flex ftco-animate">
-								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-ideas"></span>
-								</div>
-								<div class="text pl-3">
-									<span class="date">2022.09.29</span>
-									<h2>Google Cloud Professional Machine Learning Engineer</h2>
-									
-									<p>- 구글 클라우드 머신러닝 엔지니어 취득</p>
-								</div>
-							</div>
+					<h2 class="heading" style="margin-top:0px; padding-top:0px;">Certificate</h2>
+					<div class="resume-wrap d-flex ftco-animate">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="flaticon-ideas"></span>
+						</div>
+						<div class="text pl-3">
+							<span class="date">2022.01.15</span>
+							<h2>Google Cloud Professional Cloud Architect</h2>
 							
-						</div>
-
-						<div id="page-5" class="page four">
-							<h2 class="heading">Education</h2>
-							<div class="resume-wrap d-flex ftco-animate">
-								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="flaticon-ideas"></span>
-								</div>
-								<div class="text pl-3">
-									<span class="date">2017.03-2021.02</span>
-									<h2>컴퓨터공학 전공</h2>
-									<span class="position">한림대학교</span>
-								</div>
-							</div>
+							<p>- 구글 클라우드 아키텍트 취득</p>
 						</div>
 					</div>
-
+					<div class="resume-wrap d-flex ftco-animate">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="flaticon-ideas"></span>
+						</div>
+						<div class="text pl-3">
+							<span class="date">2022.03.04</span>
+							<h2>Google Cloud Professional Data Engineer</h2>
+							
+							<p>- 구글 클라우드 데이터 엔지니어 취득</p>
+						</div>
 					</div>
+					<div class="resume-wrap d-flex ftco-animate">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="flaticon-ideas"></span>
+						</div>
+						<div class="text pl-3">
+							<span class="date">2022.09.29</span>
+							<h2>Google Cloud Professional Machine Learning Engineer</h2>
+							
+							<p>- 구글 클라우드 머신러닝 엔지니어 취득</p>
+						</div>
+						</div>
+				</div>
+
+				<div id="page-5" class="page four">
+					<h2 class="heading">Education</h2>
+					<div class="resume-wrap d-flex ftco-animate">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="flaticon-ideas"></span>
+						</div>
+						<div class="text pl-3">
+							<span class="date">2017.03-2021.02</span>
+							<h2>컴퓨터공학 전공</h2>
+							<span class="position">한림대학교</span>
+						</div>
+					</div>
+				</div>
+
+				</div>
 
 				</div>
 			</div>
