@@ -463,7 +463,7 @@
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">담당 업무</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 네이버, 카카오, 구글 등 주요 광고 매체 API 연동 및 데이터 수집 파이프라인 구축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- ROAS 기반 광고주 추천 시스템 및 충전/회수 미수 광고주 관리 로직 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 외부 결제 시스템 연동 및 광고비 정산 프로세스 자동화</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 외부 결제 시스템 연동 및 광고비 충전/회수 프로세스 자동화</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 광고주별 리포팅 데이터 가공 및 일 1회 갱신되는 대시보드 백엔드 API 개발</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 멀티 모듈 아키텍처 설계로 서비스별 독립 배포 환경 구축</p>
 
@@ -535,22 +535,29 @@
 
 								<p style="color:#3e64ff; margin-top:20px; font-weight:bold;">담당 업무</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 인증 서류 업로드/검토 워크플로우 설계 및 백엔드 API 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 임상 실험 데이터 수집/분석/리포트 자동 생성 시스템 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 임상 실험 데이터 워크플로우 설계 및 수집된 데이터를 통한 리포트 자동 생성 시스템 구축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- OCR 텍스트 매칭을 위한 트라이 + 슬라이딩 윈도우 알고리즘 기반 검색 시스템 개발</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 레거시 시스템 1:1 테이블 구조를 1:N으로 전환하여 30여 개 API 리팩토링 및 성능 40% 개선</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 화장품 성분 데이터베이스 구축 및 일 200만 건 규제 단어 검증 시스템 개발</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- EC2 단일 서버 다중 Jar 배포 환경을 ECS 컨테이너 기반 배포로 전환 및 Terraform IaC 적용</p>
 
 								<div class="troubleshooting-inner" style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
 									<h4 style="color:#3e64ff; font-weight:bold; margin-bottom:10px;">
 										<span class="flaticon-idea" style="margin-right:5px;"></span>
 										TroubleShooting
 									</h4>
-									<div style="margin-bottom:20px;">
+									<div>
 										<b style="color:#222;">OCR 텍스트 매칭 정확도 문제</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 임상 실험 검사 시 규제 단어 검출을 위해 사용자가 등록한 딕셔너리와 AI 서버에서 분석된 OCR 텍스트를 매칭해야 했습니다. 하지만 OCR 결과가 단어 단위가 아닌 "안 녕"처럼 글자별로 분리되어 오는 경우가 많아 정확한 매칭이 어려웠고, 수만 개의 딕셔너리 단어를 실시간으로 검색하기엔 성능 병목이 발생했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 성능 최적화를 위해 애플리케이션 시작 시 트라이 알고리즘으로 딕셔너리 검색 구조를 미리 구축하고, 사용자가 추가한 새로운 단어들을 매일 아침 배치 작업을 통해 트라이 구조에 반영하여 메모리 효율성과 안정성을 확보했습니다. OCR 텍스트의 분리 문제 해결을 위해 슬라이딩 윈도우 알고리즘을 적용하여 연속된 글자들을 조합해 단어를 재구성하고 딕셔너리와 매칭하도록 구현했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">성과</span>: 트라이 + 슬라이딩 알고리즘 도입으로 검색 속도가 기존 대비 60% 개선되어 사용자에게 전달하는 응답 속도가 향상되었습니다.
 									</div>
+								</div>
+
+								<div class="troubleshooting-inner" style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+									<h4 style="color:#3e64ff; font-weight:bold; margin-bottom:10px;">
+										<span class="flaticon-idea" style="margin-right:5px;"></span>
+										TroubleShooting
+									</h4>
 									<div>
 										<b style="color:#222;">인프라 확장성 및 배포 안정성 개선</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 기존에는 EC2 + CodeDeploy + Nginx를 통한 무중단 배포를 사용했지만, MSA로 프로젝트 구조를 변경할 예정이었습니다. 각 모듈별로 개별 EC2 인스턴스를 관리하고 배포하기에는 확장성이 떨어지고, 인프라 관리가 복잡해지는 문제가 있었습니다. 또한 수동으로 관리되는 인프라 설정으로 인해 환경 일관성과 재현성에 어려움이 있었습니다.<br><br>
@@ -618,14 +625,6 @@
 									REST API 문서 표준화 가이드라인을 수립하고 Rest Docs 기반 자동 문서화 시스템을 구축했습니다.
 									이를 통해 팀 간 소통 시간이 30% 이상 단축되고 개발 생산성이 42% 향상되었으며,
 									API 연동 관련 버그 발생률이 40% 이상 감소하는 성과를 달성했습니다.
-								</p>
-								<p style="margin-bottom:15px; line-height:1.6;">
-									<b style="color:#222;">• 기획팀과의 기술적 제약사항 소통 및 요구사항 조율</b><br>
-									기획팀이 요청한 "무제한 데이터 조회" 기능의 성능 이슈를 개발에 익숙하지 않은 기획자에게 
-									이해하기 쉽게 설명하고 대안을 제시했습니다.<br> 데이터베이스 부하와 응답 시간 지연 문제를
-									실제 시연을 통해 보여주고, 페이지네이션과 검색 필터를 추가한 실용적인 기능으로 조정하여 
-									합의를 도출했습니다.<br> 이를 통해 기획팀의 만족도를 유지하면서도 기술적으로 안정적인
-									서비스를 제공할 수 있었고, 향후 유사한 요구사항에 대한 소통 효율성이 크게 향상되었습니다.
 								</p>
 							</div>
 
