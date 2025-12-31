@@ -760,6 +760,148 @@
 			li {
 				margin-bottom: 0.2em !important;
 			}
+			
+			/* ========== 페이지 레이아웃 최적화 ========== */
+			
+			/* 네비게이션, 히어로 섹션 숨김 */
+			nav,
+			.navbar,
+			.hero-wrap,
+			#navi {
+				display: none !important;
+			}
+			
+			/* 사이드 메뉴 숨김하고 메인 컨텐츠 전체 폭 사용 */
+			.col-md-3:has(#navi) {
+				display: none !important;
+			}
+			
+			.col-md-9 {
+				flex: 0 0 100% !important;
+				max-width: 100% !important;
+			}
+			
+			/* About Me 섹션 */
+			#about-section {
+				padding: 30px 0 40px 0 !important;
+				page-break-after: avoid !important;
+			}
+			
+			/* About Me 내부 요소 여백 */
+			#about-section .heading-section {
+				margin-bottom: 30px !important;
+			}
+			
+			#about-section .row.justify-content-center {
+				margin-bottom: 20px !important;
+			}
+			
+			/* "문제를 정의하고..." 부분 여백 - 위쪽 공백 크게 */
+			#about-section .row.mt-4 {
+				margin-top: 60px !important;
+				margin-bottom: 20px !important;
+			}
+			
+			/* Core Strengths - About Me와 같은 페이지 */
+			#strengths-section {
+				padding: 30px 0 !important;
+				page-break-before: avoid !important;
+				page-break-after: always !important;
+			}
+			
+			/* Core Strengths 카드 한 줄에 4개 */
+			#strengths-section .col-lg-3 {
+				flex: 0 0 25% !important;
+				max-width: 25% !important;
+			}
+			
+			#strengths-section .services-1 {
+				padding: 15px !important;
+				min-height: auto !important;
+			}
+			
+			/* Tech Stack - 새 페이지 시작 */
+			#page-1 {
+				page-break-before: always !important;
+			}
+			
+			/* Tech Stack 그리드 레이아웃 */
+			#page-1 .col-md-6 {
+				flex: 0 0 33.33% !important;
+				max-width: 33.33% !important;
+				padding: 5px !important;
+			}
+			
+			/* Experience - 이어서 */
+			#page-2 {
+				page-break-before: auto !important;
+				page-break-inside: avoid !important;
+			}
+			
+			/* 각 회사별 경력 - 내부에서 분리되지 않도록 */
+			.resume-wrap {
+				page-break-inside: avoid !important;
+				margin-bottom: 15px !important;
+				padding-bottom: 15px !important;
+			}
+			
+			/* Technical Highlights */
+			#page-3 {
+				page-break-before: auto !important;
+			}
+			
+			/* Collaboration */
+			#page-6 {
+				page-break-before: auto !important;
+			}
+			
+			/* Certificate & Education */
+			#page-4,
+			#page-5 {
+				page-break-before: auto !important;
+			}
+			
+			/* 섹션 제목 스타일 */
+			.heading {
+				font-size: 16pt !important;
+				margin-bottom: 10px !important;
+				padding-bottom: 5px !important;
+				border-bottom: 2px solid #3e64ff !important;
+			}
+			
+			/* Career Summary 2컬럼 레이아웃 유지 */
+			#about-section .col-md-6 {
+				flex: 0 0 50% !important;
+				max-width: 50% !important;
+			}
+			
+			/* About Me 제목 크기 조정 */
+			#about-section h1.big {
+				font-size: 24pt !important;
+			}
+			
+			#about-section h2.mb-4 {
+				font-size: 18pt !important;
+			}
+			
+			/* 본문 여백 최적화 */
+			.container {
+				max-width: 100% !important;
+				padding: 0 15px !important;
+			}
+			
+			section {
+				padding: 10px 0 !important;
+			}
+			
+			/* 불필요한 공백 제거 */
+			.ftco-section {
+				padding: 15px 0 !important;
+			}
+			
+			.ftco-no-pb {
+				padding-bottom: 0 !important;
+			}
 		}
 	</style>
 </head>
