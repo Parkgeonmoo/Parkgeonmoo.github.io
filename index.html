@@ -54,6 +54,31 @@
 			color: #333;
 		}
 		
+		/* Contact Info 라벨-값 붙여서 보이도록 (웹 기본) */
+		.about-info {
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+		
+		.about-info li {
+			display: grid !important;
+			grid-template-columns: minmax(58px, 72px) 1fr !important;
+			column-gap: 3px !important;
+			margin-bottom: 6px !important;
+			align-items: baseline !important;
+		}
+		
+		.about-info li span:first-child {
+			min-width: 0 !important;
+			font-weight: 700 !important;
+			color: #000 !important;
+		}
+		
+		.about-info li span:last-child {
+			margin-left: 0 !important;
+			color: #333 !important;
+		}
+		
 		.resume-wrap p,
 		.resume-wrap span,
 		.resume-wrap li,
@@ -379,8 +404,37 @@
 				-webkit-print-color-adjust: exact !important;
 				print-color-adjust: exact !important;
 				padding: 15px !important;
-				box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+				box-shadow: none !important;
 				page-break-inside: avoid;
+			}
+			
+			/* Core Strengths 인쇄 시 카드 뒤 회색 박스/그림자 제거 (배경 그라데이션은 유지) */
+			#strengths-section::before,
+			#strengths-section::after,
+			#strengths-section .container::before,
+			#strengths-section .container::after,
+			#strengths-section .row::before,
+			#strengths-section .row::after,
+			#strengths-section .col-md-6::before,
+			#strengths-section .col-lg-3::before,
+			#strengths-section .col-md-6::after,
+			#strengths-section .col-lg-3::after,
+			#strengths-section .services-1::before,
+			#strengths-section .services-1::after {
+				display: none !important;
+				background: none !important;
+				box-shadow: none !important;
+			}
+			
+			/* 배경 그라데이션은 살리고, 컬럼 배경만 투명 */
+			#strengths-section {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+			}
+			
+			#strengths-section .row,
+			#strengths-section .col-md-6,
+			#strengths-section .col-lg-3 {
+				background: transparent !important;
 			}
 			
 			#strengths-section .services-1 .icon,
@@ -800,6 +854,31 @@
 			#about-section .row.mt-4 {
 				margin-top: 60px !important;
 				margin-bottom: 20px !important;
+			}
+			
+			/* Contact Info 라벨-값 간격 축소 (인쇄용) */
+			#about-section .about-info {
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+			
+			#about-section .about-info li {
+				display: grid !important;
+				grid-template-columns: minmax(58px, 72px) 1fr !important;
+				column-gap: 3px !important;
+				margin-bottom: 6px !important;
+				align-items: baseline !important;
+			}
+			
+			#about-section .about-info li span:first-child {
+				min-width: 0 !important;
+				font-weight: 700 !important;
+				color: #000 !important;
+			}
+			
+			#about-section .about-info li span:last-child {
+				margin-left: 0 !important;
+				color: #333 !important;
 			}
 			
 			/* Core Strengths - About Me와 같은 페이지 */
