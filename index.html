@@ -8,6 +8,8 @@
 	<meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<!-- Pretendard 폰트 - 깔끔하고 가독성 좋은 한글 폰트 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
@@ -28,6 +30,46 @@
 	<link rel="stylesheet" href="css/css/team.css">
 	
 	<style>
+		/* 전체 폰트 및 텍스트 색상 */
+		body, p, span, li, div, h1, h2, h3, h4, h5, h6, a, strong, b {
+			font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+		}
+		
+		body {
+			color: #333 !important;
+			font-weight: 400;
+			line-height: 1.7;
+			letter-spacing: -0.02em;
+		}
+		
+		/* 날짜(연도) 파란색 - 재직기간, 자격증 취득일, 졸업일 */
+		.date,
+		.resume-wrap .date,
+		.resume-wrap .text .date,
+		span.date {
+			color: #3e64ff !important;
+		}
+		
+		p, span, li {
+			color: #333;
+		}
+		
+		.resume-wrap p,
+		.resume-wrap span,
+		.resume-wrap li,
+		.troubleshooting-inner p,
+		.troubleshooting-inner span,
+		.expertise-category p,
+		.expertise-category li,
+		.skills-category li {
+			color: #333 !important;
+		}
+		
+		/* 제목과 강조 색상은 유지 */
+		h1, h2, h3, h4, h5, h6 {
+			color: #000;
+		}
+		
 		/* Core Strengths h3 밑줄 강제 제거 */
 		#strengths-section h3,
 		#strengths-section h3::before,
@@ -888,7 +930,7 @@
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">대용량 데이터 처리</h3>
-							<p style="color: #666; line-height: 1.6;">1000만 건 기준<br>
+							<p style="color: #333; line-height: 1.6;">1000만 건 기준<br>
 								<strong style="color: #667eea; text-decoration: none !important;">4시간 30분에서 1시간으로</strong>
 								<br>Bulk Query + 가상 스레드<br>병렬처리로 78% 성능 개선
 							</p>
@@ -905,7 +947,7 @@
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">성능 최적화</h3>
-							<p style="color: #666; line-height: 1.6;">쿼리 응답 시간<br>
+							<p style="color: #333; line-height: 1.6;">쿼리 응답 시간<br>
 								<strong style="color: #667eea; text-decoration: none !important;">2.5초에서 0.8초로</strong>
 								<br>인덱스 최적화 +<br>정규화/반정규화 혼합 설계
 							</p>
@@ -922,7 +964,7 @@
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">시스템 안정성</h3>
-							<p style="color: #666; line-height: 1.6;">데이터 일관성<br>
+							<p style="color: #333; line-height: 1.6;">데이터 일관성<br>
 								<strong style="color: #667eea; text-decoration: none !important;">99 퍼센트 달성</strong>
 								<br>Transaction OutBox 패턴 +<br>SAGA 패턴으로 분산 환경 데이터 일관성 확보
 							</p>
@@ -939,7 +981,7 @@
 						</span>
 						<div class="desc">
 							<h3 class="mb-3" style="color: #3e64ff; font-weight: bold; text-decoration: none !important; border-bottom: none !important;">인프라 자동화 & 모니터링</h3>
-							<p style="color: #666; line-height: 1.6;">
+							<p style="color: #333; line-height: 1.6;">
 								<strong style="color: #667eea; text-decoration: none !important;">EC2에서 ECS로</strong> 컨테이너 기반 배포<br>
 								Terraform IaC 구축<br><br>
 								<strong style="color: #667eea; text-decoration: none !important;">Prometheus + Loki + Grafana</strong><br>
@@ -973,7 +1015,7 @@
 
                     <div id="page-1" class="page three">
 						<h2 class="heading">Tech Stack</h2>
-						<p style="color: #666; margin-bottom: 30px;">실무에서 사용하고 있는 기술 스택입니다</p>
+						<p style="color: #333; margin-bottom: 30px;">실무에서 사용하고 있는 기술 스택입니다</p>
 
 						<div class="row">
 							<div class="col-md-6 animate-box">
@@ -1206,7 +1248,7 @@
 
 					<div id="page-3" class="page two">
 						<h2 class="heading">Technical Highlights</h2>
-						<p style="color: #666; margin-bottom: 30px;">핵심 기술로 달성한 주요 성과</p>
+						<p style="color: #333; margin-bottom: 30px;">핵심 기술로 달성한 주요 성과</p>
 
 						<div class="expertise-category" style="margin-bottom: 35px;">
 							<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px; font-size: 20px;">
@@ -1304,7 +1346,7 @@
 
 					<div id="page-6" class="page two">
 						<h2 class="heading">Collaboration</h2>
-						<p style="color: #666; margin-bottom: 30px;">팀과 함께 성장하며 만들어낸 성과</p>
+						<p style="color: #333; margin-bottom: 30px;">팀과 함께 성장하며 만들어낸 성과</p>
 
 							<span style="color:#3e64ff; font-weight:bold; font-size:18px;">Communication</span>
 							<div style="margin-top:15px; margin-bottom:25px;">
