@@ -1355,7 +1355,7 @@
 								<div class="skills-category ftco-animate">
 									<h3 style="color: #3e64ff; font-weight: bold; margin-bottom: 15px;">Framework</h3>
 									<ul style="list-style: none; padding-left: 0;">
-										<li style="margin-bottom: 8px;">• Spring Boot MVC (Spring Security, Spring Batch, JPA, QueryDSL, Circuit Breaker, Thymeleaf)</li>
+										<li style="margin-bottom: 8px;">• Spring Boot MVC (Spring Security, Spring Batch, JPA, QueryDSL, Thymeleaf)</li>
 										<li style="margin-bottom: 8px;">• Spring WebFlux (Spring Cloud Gateway)</li>
 									</ul>
 								</div>
@@ -1442,7 +1442,7 @@
 								<p style="margin-top:0px; margin-bottom:0px;">- ROAS 기반 광고주 추천 시스템 및 충전/회수 미수 광고주 관리 로직 개발</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 외부 결제 시스템 연동 및 광고비 충전/회수 프로세스 자동화</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 광고주별 리포팅 데이터 가공 및 일 1회 갱신되는 대시보드 백엔드 API 개발</p>
-								<p style="margin-top:0px; margin-bottom:0px;">- 멀티 모듈 아키텍처 설계 및 ECS를 이용한 서비스별 독립 배포 환경 구축</p>
+								<p style="margin-top:0px; margin-bottom:0px;">- 멀티 모듈 아키텍처 설계로 서비스별 독립 배포 환경 구축</p>
 								<p style="margin-top:0px; margin-bottom:0px;">- 서버별 로그 모니터링 대시보드 구축</p>
 
 								<div class="troubleshooting-inner" style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
@@ -1523,7 +1523,7 @@
 									<div>
 										<b style="color:#222;">OCR 텍스트 매칭 정확도 문제</b><br><br>
 										<span style="color:#222; font-weight:bold;">문제 상황</span>: 임상 실험 검사 시 규제 단어 검출을 위해 사용자가 등록한 딕셔너리와 AI 서버에서 분석된 OCR 텍스트를 매칭해야 했습니다. 하지만 OCR 결과가 단어 단위가 아닌 "안 녕"처럼 글자별로 분리되어 오는 경우가 많아 정확한 매칭이 어려웠고, 수만 개의 딕셔너리 단어를 실시간으로 검색하기엔 성능 병목이 발생했습니다.<br><br>
-										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 성능 최적화를 위해 애플리케이션 시작 시 트라이 알고리즘으로 딕셔너리 검색 구조를 미리 구축하고, 사용자가 추가한 새로운 단어들을 매일 아침 배치 작업을 통해 트라이 구조에 반영하여 메모리 효율성과 안정성을 확보했습니다. OCR 텍스트의 분리 문제 해결을 위해 슬라이딩 윈도우 알고리즘을 적용하여 연속된 글자들을 조합해 단어를 재구성하고 딕셔너리와 매칭하도록 구현했습니다.<br><br>
+										<span style="color:#222; font-weight:bold;">접근 및 해결</span>: 기존에는 딕셔너리를 리스트로 두고 순차 탐색할 경우 시간복잡도가 <b>O(N)</b>(N=딕셔너리 단어 수)이라 수만 개 규모에서 실시간 검색 시 병목이 발생했습니다. 트라이(Trie) 구조를 도입하여 탐색 시간복잡도를 <b>O(m)</b>(m=검색 대상 문자열 길이)으로 낮추었습니다. 딕셔너리 크기 N과 무관하게 검색어 길이에만 비례하므로, 단어 수가 늘어나도 탐색 속도가 일정하게 유지됩니다. 또한 접두사가 트리 경로로만 저장되어 전체 단어 목록을 매번 메모리에 올리지 않고도 검색이 가능해 메모리 효율을 확보했습니다. 애플리케이션 기동 시 트라이를 한 번 구축하고, 사용자 추가 단어는 매일 아침 배치로 반영했습니다. OCR 텍스트의 글자 분리 문제는 슬라이딩 윈도우 알고리즘으로 연속 글자를 조합해 단어를 재구성한 뒤 트라이와 매칭하도록 구현했습니다.<br><br>
 										<span style="color:#222; font-weight:bold;">성과</span>: 트라이 + 슬라이딩 알고리즘 도입으로 검색 속도가 기존 대비 60% 개선되어 사용자에게 전달하는 응답 속도가 향상되었습니다.
 									</div>
 								</div>
