@@ -1601,7 +1601,7 @@
 								</li>
 								<li style="margin-bottom: 10px;">
 									<span style="color: #667eea; font-weight: bold;">▸</span> 
-									Spring Batch 파이프라인으로 <b>일 200만 건 안정적 처리</b>
+									Spring Batch 파이프라인으로 <b>일 100만 건 안정적 처리</b>
 								</li>
 							</ul>
 						</div>
@@ -1616,12 +1616,16 @@
 									Transaction OutBox + SAGA 패턴으로 <b>MSA 환경 데이터 일관성 99% 달성</b>
 								</li>
 								<li style="margin-bottom: 10px;">
-									<span style="color: #667eea; font-weight: bold;">▸</span> 
-									RabbitMQ + DLQ 기반 재처리로 서버 부담 감소 및 안정적 비동기 처리
+									<span style="color: #667eea; font-weight: bold;">▸</span>
+									RabbitMQ + DLQ로 실패 메시지 격리 및 모니터링
 								</li>
 								<li style="margin-bottom: 10px;">
-									<span style="color: #667eea; font-weight: bold;">▸</span> 
-									Guava RateLimiter + 지수 백오프로 외부 API 호출 안정성 확보 및 Circuit Breaker 적용을 통한 장애 전파 방지 적용
+									<span style="color: #667eea; font-weight: bold;">▸</span>
+									Token Bucket 기반 RateLimiter로 외부 API 호출량 제어
+								</li>
+								<li style="margin-bottom: 10px;">
+									<span style="color: #667eea; font-weight: bold;">▸</span>
+									지수 백오프 + Circuit Breaker로 장애 전파 방지 및 안정성 확보
 								</li>
 							</ul>
 						</div>
@@ -1637,11 +1641,11 @@
 								</li>
 								<li style="margin-bottom: 10px;">
 									<span style="color: #667eea; font-weight: bold;">▸</span> 
-									Blue/Green 배포 + GitHub Actions CI/CD로 무중단 배포 자동화
+									Blue/Green 배포 및 Rolling 배포 + GitHub Actions CI/CD로 무중단 배포 자동화
 								</li>
 								<li style="margin-bottom: 10px;">
 									<span style="color: #667eea; font-weight: bold;">▸</span> 
-									JWT + Spring Security + API Key 다중 인증으로 <b>무단 접근 차단율 99.7%</b>
+									JWT + Spring Security 인증 및 CORS 설정으로 <b>무단 접근 차단율 99.7%</b>
 								</li>
 								<li style="margin-bottom: 10px;">
 									<span style="color: #667eea; font-weight: bold;">▸</span> 
